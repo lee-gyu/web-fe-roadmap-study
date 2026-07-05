@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 
 export default defineConfig({
   lang: 'ko-KR',
+  base: '/web-fe-roadmap-study/',
   title: '웹 프론트엔드 심화 학습 로드맵',
   description: '경력 개발자를 위한 웹 프론트엔드 심화 교육 문서',
   cleanUrls: true,
