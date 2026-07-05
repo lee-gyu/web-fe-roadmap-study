@@ -11,7 +11,7 @@
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 총 약 24주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 기간 | 총 약 26주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js |
 | 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + 최종 포트폴리오 프로젝트 2개 이상 |
 
@@ -20,7 +20,7 @@
 1. **원리 우선** — API 사용법이 아니라 그 아래의 동작 모델(파서, 엔진, 런타임, 네트워크)을 먼저 세운다. 사용법은 모델의 표현으로 익힌다.
 2. **트레이드오프 중심** — 모든 기술 선택에는 비용이 있다. "무엇을 쓸까"가 아니라 "이 상황에서 각 선택이 무엇을 얻고 무엇을 포기하는가"를 판단 기준으로 삼는다.
 3. **경계 조건 탐색** — 추상화가 무너지는 지점(성능 급락, 스펙의 한계, 프레임워크의 탈출구)을 의도적으로 찾아가며 학습한다.
-4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG)과 공식 문서를 1차 자료로 삼고, 통념과 스펙이 다르면 스펙으로 검증한다.
+4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC)과 공식 문서를 1차 자료로 삼고, 통념과 스펙이 다르면 스펙으로 검증한다.
 5. **만들며 검증하기** — 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측·분석으로 왜 그렇게 동작하는지까지 확인한다.
 
 ---
@@ -30,24 +30,26 @@
 ```mermaid
 flowchart LR
     P0["Phase 0<br/>웹 플랫폼의<br/>이해"] --> P1["Phase 1<br/>HTML & CSS"]
-    P1 --> P2["Phase 2<br/>JavaScript<br/>언어와 런타임"]
-    P2 --> P3["Phase 3<br/>TypeScript<br/>타입 시스템"]
-    P3 --> P4["Phase 4<br/>React<br/>렌더링 모델"]
-    P4 --> P5["Phase 5<br/>도구의<br/>내부 동작"]
-    P5 --> P6["Phase 6<br/>브라우저·네트워크<br/>심화"]
-    P6 --> P7["Phase 7<br/>실전 프로젝트와<br/>기술 검증"]
+    P1 --> P2["Phase 2<br/>HTTP<br/>프로토콜"]
+    P2 --> P3["Phase 3<br/>JavaScript<br/>언어와 런타임"]
+    P3 --> P4["Phase 4<br/>TypeScript<br/>타입 시스템"]
+    P4 --> P5["Phase 5<br/>React<br/>렌더링 모델"]
+    P5 --> P6["Phase 6<br/>도구의<br/>내부 동작"]
+    P6 --> P7["Phase 7<br/>브라우저·네트워크<br/>심화"]
+    P7 --> P8["Phase 8<br/>실전 프로젝트와<br/>기술 검증"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
 |-------|------|-----------|------------|
 | 0 | 웹 플랫폼의 이해 | 1주 | 요청→픽셀 파이프라인 정리 노트 |
 | 1 | HTML & CSS — 파싱과 렌더링 모델 | 3주 | 반응형 정적 웹사이트 (접근성 검증 포함) |
-| 2 | JavaScript — 언어와 런타임 | 5주 | 바닐라 JS 웹 앱 + 이벤트 루프/메모리 분석 |
-| 3 | TypeScript — 타입 시스템 | 2주 | JS 프로젝트의 TS 마이그레이션 + 타입 설계 문서 |
-| 4 | React — 렌더링 모델과 상태 아키텍처 | 5주 | React SPA (리렌더 분석 리포트 포함) |
-| 5 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
-| 6 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
-| 7 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
+| 2 | HTTP — 프로토콜의 이해 | 2주 | 실서비스 HTTP 트래픽 분석 리포트 |
+| 3 | JavaScript — 언어와 런타임 | 5주 | 바닐라 JS 웹 앱 + 이벤트 루프/메모리 분석 |
+| 4 | TypeScript — 타입 시스템 | 2주 | JS 프로젝트의 TS 마이그레이션 + 타입 설계 문서 |
+| 5 | React — 렌더링 모델과 상태 아키텍처 | 5주 | React SPA (리렌더 분석 리포트 포함) |
+| 6 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
+| 7 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
+| 8 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
 
 ---
 
@@ -85,106 +87,122 @@ flowchart LR
 
 ---
 
-### Phase 2 — JavaScript: 언어와 런타임 (5주)
+### Phase 2 — HTTP: 프로토콜의 이해 (2주)
+
+**학습 목표**: HTTP를 의미론(semantics)과 전송(transport)의 두 계층으로 나눠 이해하고, 캐싱·상태 관리·프로토콜 버전 선택을 RFC 9110~9114 스펙을 근거로 판단할 수 있다. 프론트엔드가 보내고 받는 모든 바이트의 규약을 세우는 Phase다.
+
+| # | 문서 | 주요 내용 |
+|---|------|----------|
+| 2-1 | `docs/phase-2/01-http-semantics.md` | **[기초]** HTTP 메시지의 구조와 의미론(RFC 9110): 메서드의 안전성(safe)·멱등성(idempotent)이 재시도·캐시·프리페치의 근거가 되는 구조, 상태 코드의 분류와 실무 오용 사례, 표현(representation)과 콘텐츠 협상 |
+| 2-2 | `docs/phase-2/02-http-caching.md` | **[기초]** HTTP 캐싱 모델: 신선도(Cache-Control)와 재검증(ETag/Last-Modified, 조건부 요청)의 2단 구조, 공유 캐시와 사설 캐시, 불변 자산의 캐시 영구화 패턴(콘텐츠 해시), 캐시가 무너지는 경계 조건 |
+| 2-3 | `docs/phase-2/03-cookies-and-state.md` | **[기초]** 무상태 프로토콜 위의 상태: 쿠키의 동작 모델과 속성(Domain/Path/Secure/HttpOnly/SameSite)의 보안 함의, 세션 vs 토큰의 트레이드오프, 쿠키가 요청마다 실어 나르는 비용 (보안 공격·방어 심화는 7-4) |
+| 2-4 | `docs/phase-2/04-http-versions.md` | **[심화]** 연결 관리와 프로토콜 진화: HTTP/1.1 keep-alive와 HOL 블로킹, HTTP/2 멀티플렉싱·스트림 우선순위와 남은 한계(TCP 계층 HOL), HTTP/3와 QUIC이 UDP 위에 다시 만든 것, 버전별 선택 기준 |
+| 2-5 | `docs/phase-2/05-https-and-tls.md` | **[심화]** HTTPS의 동작 모델: TLS 핸드셰이크가 지연에 미치는 비용(1.3의 개선, 0-RTT), 인증서 체인과 신뢰 모델, HSTS, mixed content — HTTPS가 사실상 필수가 된 플랫폼 정책(Secure Context 전용 API) |
+
+**실습 과제**: 실서비스 하나를 골라 DevTools Network 패널과 `curl -v`로 HTTP 트래픽을 분석한다 — 프로토콜 버전, 캐싱 정책, 쿠키 속성, 압축·협상 헤더를 항목별로 평가하고 개선안을 담은 분석 리포트를 작성한다.
+
+---
+
+### Phase 3 — JavaScript: 언어와 런타임 (5주)
 
 **학습 목표**: ECMAScript의 실행 모델(실행 컨텍스트, 프로토타입, 이벤트 루프)과 브라우저 런타임의 상호작용을 메커니즘 수준에서 설명할 수 있고, 프레임워크 없이 동작하는 웹 앱을 만들 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 2-1 | `docs/phase-2/01-execution-model.md` | 실행 컨텍스트와 렉시컬 환경(Environment Record), 호이스팅의 실체와 TDZ, 스코프 체인, this 바인딩 4가지 규칙과 결정 시점 |
-| 2-2 | `docs/phase-2/02-closures-and-functions.md` | 클로저의 메모리 모델(무엇이 캡처되고 언제 해제되는가), 고차 함수 패턴, 화살표 함수가 this를 바인딩하지 않는 설계 의도 |
-| 2-3 | `docs/phase-2/03-types-and-coercion.md` | 동적 타입 시스템과 암묵적 변환의 알고리즘(ToPrimitive 등 추상 연산), `==`의 실제 판정 규칙, NaN/-0/BigInt 경계 사례 |
-| 2-4 | `docs/phase-2/04-object-model.md` | 프로토타입 체인의 탐색·섀도잉 메커니즘, property descriptor, class 문법이 감추는 것과 감추지 못하는 것, private 필드(#) |
-| 2-5 | `docs/phase-2/05-event-loop.md` | 콜 스택·태스크 큐·마이크로태스크의 우선순위 규칙, 렌더링 파이프라인과의 상호작용, requestAnimationFrame, Node.js 이벤트 루프와의 차이 |
-| 2-6 | `docs/phase-2/06-promises-and-async.md` | Promise 상태 머신과 then 체이닝 규칙, async/await가 어떻게 변환되는가, 에러 전파 경로, AbortController와 취소, 동시성 제어 패턴 |
-| 2-7 | `docs/phase-2/07-dom-and-events.md` | DOM 조작의 비용 모델(왜 느린가), live vs static 컬렉션, 이벤트 전파 3단계와 위임, 커스텀 이벤트로 컴포넌트 간 통신 |
-| 2-8 | `docs/phase-2/08-network-apis.md` | fetch의 설계(Response 스트림, body를 한 번만 읽을 수 있는 이유), HTTP 캐시와의 협력, 네트워크 에러 vs HTTP 에러, CORS 개요(심화는 6-2) |
-| 2-9 | `docs/phase-2/09-modules.md` | ESM vs CommonJS: 정적 구조와 라이브 바인딩, 순환 의존 처리 방식의 차이, 모듈 그래프 — 트리 셰이킹이 성립하는 전제 |
-| 2-10 | `docs/phase-2/10-memory-and-storage.md` | V8의 세대별 GC와 도달 가능성, 프론트엔드 특유의 누수 패턴(리스너·클로저·캐시), 브라우저 저장소(localStorage/IndexedDB/쿠키)의 트레이드오프와 보안 속성 |
+| 3-1 | `docs/phase-3/01-execution-model.md` | 실행 컨텍스트와 렉시컬 환경(Environment Record), 호이스팅의 실체와 TDZ, 스코프 체인, this 바인딩 4가지 규칙과 결정 시점 |
+| 3-2 | `docs/phase-3/02-closures-and-functions.md` | 클로저의 메모리 모델(무엇이 캡처되고 언제 해제되는가), 고차 함수 패턴, 화살표 함수가 this를 바인딩하지 않는 설계 의도 |
+| 3-3 | `docs/phase-3/03-types-and-coercion.md` | 동적 타입 시스템과 암묵적 변환의 알고리즘(ToPrimitive 등 추상 연산), `==`의 실제 판정 규칙, NaN/-0/BigInt 경계 사례 |
+| 3-4 | `docs/phase-3/04-object-model.md` | 프로토타입 체인의 탐색·섀도잉 메커니즘, property descriptor, class 문법이 감추는 것과 감추지 못하는 것, private 필드(#) |
+| 3-5 | `docs/phase-3/05-event-loop.md` | 콜 스택·태스크 큐·마이크로태스크의 우선순위 규칙, 렌더링 파이프라인과의 상호작용, requestAnimationFrame, Node.js 이벤트 루프와의 차이 |
+| 3-6 | `docs/phase-3/06-promises-and-async.md` | Promise 상태 머신과 then 체이닝 규칙, async/await가 어떻게 변환되는가, 에러 전파 경로, AbortController와 취소, 동시성 제어 패턴 |
+| 3-7 | `docs/phase-3/07-dom-and-events.md` | DOM 조작의 비용 모델(왜 느린가), live vs static 컬렉션, 이벤트 전파 3단계와 위임, 커스텀 이벤트로 컴포넌트 간 통신 |
+| 3-8 | `docs/phase-3/08-network-apis.md` | fetch의 설계(Response 스트림, body를 한 번만 읽을 수 있는 이유), HTTP 캐시와의 협력(캐싱 모델은 Phase 2-2 전제), 네트워크 에러 vs HTTP 에러, CORS 개요(심화는 7-2) |
+| 3-9 | `docs/phase-3/09-modules.md` | ESM vs CommonJS: 정적 구조와 라이브 바인딩, 순환 의존 처리 방식의 차이, 모듈 그래프 — 트리 셰이킹이 성립하는 전제 |
+| 3-10 | `docs/phase-3/10-memory-and-storage.md` | V8의 세대별 GC와 도달 가능성, 프론트엔드 특유의 누수 패턴(리스너·클로저·캐시), 브라우저 저장소(localStorage/IndexedDB/쿠키)의 트레이드오프와 보안 속성 |
 
 **실습 과제**: 바닐라 JS로 Todo 앱(로컬 스토리지 저장) 제작 → 공개 API 검색/조회 앱 제작. DevTools Performance/Memory 패널로 이벤트 루프 동작과 메모리 누수 여부를 직접 계측해 분석 노트를 남긴다.
 
 ---
 
-### Phase 3 — TypeScript: 타입 시스템 (2주)
+### Phase 4 — TypeScript: 타입 시스템 (2주)
 
 **학습 목표**: 구조적 타입 시스템의 판정 규칙을 이해하고, 타입으로 도메인 제약을 표현하는 설계와 타입 레벨 프로그래밍을 구사할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 3-1 | `docs/phase-3/01-type-system-foundations.md` | 구조적 타이핑(structural typing) vs 명목적 타이핑, 할당 가능성 판정 규칙, 타입 추론과 넓히기/좁히기, any/unknown/never의 타입 격자 상 위치 |
-| 3-2 | `docs/phase-3/02-type-design.md` | interface vs type의 실제 차이(선언 병합, 표시 방식), 판별 유니언(discriminated union)과 철저성 검사, enum의 문제와 대안(const 객체, 리터럴 유니언) |
-| 3-3 | `docs/phase-3/03-generics-and-variance.md` | 제네릭 타입 인자의 추론 동작, 제약(constraints), 변성(variance): 공변/반공변과 메서드 축약 표기가 만드는 구멍 |
-| 3-4 | `docs/phase-3/04-type-level-programming.md` | 조건부 타입과 유니언 분배, infer, mapped type, template literal type — 유틸리티 타입(Partial, ReturnType 등)을 직접 구현하며 원리 이해 |
-| 3-5 | `docs/phase-3/05-compiler-and-config.md` | tsc 파이프라인(타입 검사와 트랜스파일의 분리 — 왜 esbuild는 검사를 안 하는가), tsconfig strict 계열 옵션 각각의 근거, 선언 파일(.d.ts)과 모듈 해석 |
+| 4-1 | `docs/phase-4/01-type-system-foundations.md` | 구조적 타이핑(structural typing) vs 명목적 타이핑, 할당 가능성 판정 규칙, 타입 추론과 넓히기/좁히기, any/unknown/never의 타입 격자 상 위치 |
+| 4-2 | `docs/phase-4/02-type-design.md` | interface vs type의 실제 차이(선언 병합, 표시 방식), 판별 유니언(discriminated union)과 철저성 검사, enum의 문제와 대안(const 객체, 리터럴 유니언) |
+| 4-3 | `docs/phase-4/03-generics-and-variance.md` | 제네릭 타입 인자의 추론 동작, 제약(constraints), 변성(variance): 공변/반공변과 메서드 축약 표기가 만드는 구멍 |
+| 4-4 | `docs/phase-4/04-type-level-programming.md` | 조건부 타입과 유니언 분배, infer, mapped type, template literal type — 유틸리티 타입(Partial, ReturnType 등)을 직접 구현하며 원리 이해 |
+| 4-5 | `docs/phase-4/05-compiler-and-config.md` | tsc 파이프라인(타입 검사와 트랜스파일의 분리 — 왜 esbuild는 검사를 안 하는가), tsconfig strict 계열 옵션 각각의 근거, 선언 파일(.d.ts)과 모듈 해석 |
 
-**실습 과제**: Phase 2 프로젝트를 TypeScript로 마이그레이션한다. any 0개를 목표로 하되, 타입 단언이 필요했던 지점마다 "왜 추론이 실패했는가"를 기록한 타입 설계 문서를 함께 작성한다.
+**실습 과제**: Phase 3 프로젝트를 TypeScript로 마이그레이션한다. any 0개를 목표로 하되, 타입 단언이 필요했던 지점마다 "왜 추론이 실패했는가"를 기록한 타입 설계 문서를 함께 작성한다.
 
 ---
 
-### Phase 4 — React: 렌더링 모델과 상태 아키텍처 (5주)
+### Phase 5 — React: 렌더링 모델과 상태 아키텍처 (5주)
 
 **학습 목표**: React의 렌더링 파이프라인(렌더/커밋, 재조정)을 모델로 세우고, 리렌더·이펙트·상태 배치를 근거를 갖고 설계·진단할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 4-1 | `docs/phase-4/01-react-mental-model.md` | UI를 상태의 함수로 보는 모델과 그 비용, JSX가 컴파일되는 결과물(createElement/jsx 런타임), 직접 DOM 조작 대비 무엇을 얻고 무엇을 포기하는가 |
-| 4-2 | `docs/phase-4/02-rendering-and-reconciliation.md` | 렌더 단계와 커밋 단계의 분리, 재조정 휴리스틱(타입 비교, key의 실제 역할), 리렌더가 전파되는 규칙 — "부모가 렌더하면 자식도 렌더한다" |
-| 4-3 | `docs/phase-4/03-state-and-batching.md` | useState의 내부(훅이 호출 순서에 의존하는 이유), 상태 갱신의 자동 배칭과 스냅샷 의미론, 불변성이 전제인 이유, 제어 컴포넌트와 폼 |
-| 4-4 | `docs/phase-4/04-effects.md` | useEffect의 실행 시점과 클린업 사이클, 의존성 배열과 stale closure, 데이터 페칭의 race condition 처리, "이펙트가 필요 없는 경우"의 판별 |
-| 4-5 | `docs/phase-4/05-performance-model.md` | 메모이제이션의 비용-편익 분석(useMemo/useCallback/memo가 역효과인 경우), React DevTools Profiler로 리렌더 진단, React Compiler의 접근 |
-| 4-6 | `docs/phase-4/06-state-architecture.md` | Context의 리렌더 전파 문제, 외부 스토어와 useSyncExternalStore(tearing), 상태를 어디에 둘 것인가 — 지역/전역/서버 상태의 구분 기준 |
-| 4-7 | `docs/phase-4/07-routing-and-code-splitting.md` | 클라이언트 라우팅의 동작(History API), React Router 모델, lazy/Suspense와 라우트 단위 분할 |
-| 4-8 | `docs/phase-4/08-server-state.md` | TanStack Query의 캐싱 모델(stale-while-revalidate), 캐시 키 설계와 무효화 전략, 서버 상태를 클라이언트 상태와 분리해야 하는 이유 |
-| 4-9 | `docs/phase-4/09-styling-strategies.md` | CSS Modules / Tailwind / CSS-in-JS의 빌드 타임·런타임 비용 비교, 각 접근이 무너지는 지점과 선택 기준 |
+| 5-1 | `docs/phase-5/01-react-mental-model.md` | UI를 상태의 함수로 보는 모델과 그 비용, JSX가 컴파일되는 결과물(createElement/jsx 런타임), 직접 DOM 조작 대비 무엇을 얻고 무엇을 포기하는가 |
+| 5-2 | `docs/phase-5/02-rendering-and-reconciliation.md` | 렌더 단계와 커밋 단계의 분리, 재조정 휴리스틱(타입 비교, key의 실제 역할), 리렌더가 전파되는 규칙 — "부모가 렌더하면 자식도 렌더한다" |
+| 5-3 | `docs/phase-5/03-state-and-batching.md` | useState의 내부(훅이 호출 순서에 의존하는 이유), 상태 갱신의 자동 배칭과 스냅샷 의미론, 불변성이 전제인 이유, 제어 컴포넌트와 폼 |
+| 5-4 | `docs/phase-5/04-effects.md` | useEffect의 실행 시점과 클린업 사이클, 의존성 배열과 stale closure, 데이터 페칭의 race condition 처리, "이펙트가 필요 없는 경우"의 판별 |
+| 5-5 | `docs/phase-5/05-performance-model.md` | 메모이제이션의 비용-편익 분석(useMemo/useCallback/memo가 역효과인 경우), React DevTools Profiler로 리렌더 진단, React Compiler의 접근 |
+| 5-6 | `docs/phase-5/06-state-architecture.md` | Context의 리렌더 전파 문제, 외부 스토어와 useSyncExternalStore(tearing), 상태를 어디에 둘 것인가 — 지역/전역/서버 상태의 구분 기준 |
+| 5-7 | `docs/phase-5/07-routing-and-code-splitting.md` | 클라이언트 라우팅의 동작(History API), React Router 모델, lazy/Suspense와 라우트 단위 분할 |
+| 5-8 | `docs/phase-5/08-server-state.md` | TanStack Query의 캐싱 모델(stale-while-revalidate — HTTP 캐싱(2-2)과 같은 문제의 애플리케이션 계층 해법), 캐시 키 설계와 무효화 전략, 서버 상태를 클라이언트 상태와 분리해야 하는 이유 |
+| 5-9 | `docs/phase-5/09-styling-strategies.md` | CSS Modules / Tailwind / CSS-in-JS의 빌드 타임·런타임 비용 비교, 각 접근이 무너지는 지점과 선택 기준 |
 
 **실습 과제**: React + TypeScript로 API 연동 SPA(상품 목록/상세/장바구니, 게시판 등) 제작. React DevTools Profiler로 불필요한 리렌더를 찾아 개선한 전/후 비교 리포트를 포함한다.
 
 ---
 
-### Phase 5 — 도구의 내부 동작 (2주)
+### Phase 6 — 도구의 내부 동작 (2주)
 
 **학습 목표**: 패키지 매니저·번들러·린터·테스트 러너를 블랙박스가 아니라 동작 원리 수준에서 이해하고, 문제가 생겼을 때 어느 계층을 의심할지 판단할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 5-1 | `docs/phase-5/01-package-management.md` | 의존성 해석 알고리즘과 lockfile의 역할, node_modules 평탄화(호이스팅)의 문제와 pnpm의 링크 구조, semver 범위 지정의 함정(유령 의존성, 중복 설치) |
-| 5-2 | `docs/phase-5/02-bundlers.md` | 모듈 그래프 구성과 번들링, 트리 셰이킹이 성립하는 조건(사이드 이펙트 판정), Vite의 이중 구조(개발: 네이티브 ESM + esbuild, 빌드: Rollup)와 HMR의 원리 |
-| 5-3 | `docs/phase-5/03-static-analysis.md` | AST 기반 도구의 동작(ESLint 규칙이 코드를 읽는 방식), 린터와 포매터의 역할 분리, 타입 인지(type-aware) 린트의 비용 |
-| 5-4 | `docs/phase-5/04-testing-strategy.md` | 무엇을 테스트할 것인가(테스팅 트로피, 구현 상세 vs 동작), React Testing Library의 쿼리 철학, mock의 비용과 경계, Vitest 동작 구조 |
-| 5-5 | `docs/phase-5/05-ci-and-deployment.md` | CI 파이프라인 설계(캐싱, 병렬화), 미리보기 배포의 동작, 정적 호스팅과 CDN 캐시 무효화 전략 |
+| 6-1 | `docs/phase-6/01-package-management.md` | 의존성 해석 알고리즘과 lockfile의 역할, node_modules 평탄화(호이스팅)의 문제와 pnpm의 링크 구조, semver 범위 지정의 함정(유령 의존성, 중복 설치) |
+| 6-2 | `docs/phase-6/02-bundlers.md` | 모듈 그래프 구성과 번들링, 트리 셰이킹이 성립하는 조건(사이드 이펙트 판정), Vite의 이중 구조(개발: 네이티브 ESM + esbuild, 빌드: Rollup)와 HMR의 원리 |
+| 6-3 | `docs/phase-6/03-static-analysis.md` | AST 기반 도구의 동작(ESLint 규칙이 코드를 읽는 방식), 린터와 포매터의 역할 분리, 타입 인지(type-aware) 린트의 비용 |
+| 6-4 | `docs/phase-6/04-testing-strategy.md` | 무엇을 테스트할 것인가(테스팅 트로피, 구현 상세 vs 동작), React Testing Library의 쿼리 철학, mock의 비용과 경계, Vitest 동작 구조 |
+| 6-5 | `docs/phase-6/05-ci-and-deployment.md` | CI 파이프라인 설계(캐싱, 병렬화), 미리보기 배포의 동작, 정적 호스팅과 CDN 캐시 무효화 전략(HTTP 캐싱 모델(2-2) 위에서) |
 
-**실습 과제**: Phase 4 프로젝트에 린트/포맷/테스트/CI/자동 배포를 적용한다. 번들 분석 도구로 산출물을 열어 트리 셰이킹 여부와 청크 구성을 검증한다.
+**실습 과제**: Phase 5 프로젝트에 린트/포맷/테스트/CI/자동 배포를 적용한다. 번들 분석 도구로 산출물을 열어 트리 셰이킹 여부와 청크 구성을 검증한다.
 
 ---
 
-### Phase 6 — 브라우저·네트워크·보안 심화 (3주)
+### Phase 7 — 브라우저·네트워크·보안 심화 (3주)
 
-**학습 목표**: 렌더링 파이프라인·HTTP·보안 모델을 계층 수준에서 이해하고, 성능·보안·렌더링 전략을 측정과 근거에 기반해 결정할 수 있다.
+**학습 목표**: 렌더링 파이프라인·네트워크·보안 모델을 계층 수준에서 이해하고, 성능·보안·렌더링 전략을 측정과 근거에 기반해 결정할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 6-1 | `docs/phase-6/01-browser-rendering.md` | 스타일 재계산→레이아웃→페인트→합성 파이프라인, 강제 동기 레이아웃(layout thrashing)의 발생 조건, 컴포지터 스레드와 레이어 승격의 비용 |
-| 6-2 | `docs/phase-6/02-network-deep-dive.md` | HTTP/1.1의 HOL 블로킹과 2/3(멀티플렉싱, QUIC)의 해법·잔여 한계, 캐싱 헤더의 협상 모델(Cache-Control, ETag), CORS의 동작 원리(preflight가 존재하는 이유) |
-| 6-3 | `docs/phase-6/03-web-performance.md` | Core Web Vitals(LCP/CLS/INP)의 계측 원리, 로딩 워터폴 분석과 크리티컬 패스, 코드 스플리팅·리소스 힌트·이미지 최적화의 우선순위 판단 |
-| 6-4 | `docs/phase-6/04-web-security.md` | XSS 공격 벡터와 방어 계층(이스케이프, CSP, Trusted Types), CSRF와 SameSite 쿠키, 토큰 저장 위치의 트레이드오프(JWT vs 세션, localStorage vs httpOnly 쿠키) |
-| 6-5 | `docs/phase-6/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
-| 6-6 | `docs/phase-6/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
+| 7-1 | `docs/phase-7/01-browser-rendering.md` | 스타일 재계산→레이아웃→페인트→합성 파이프라인, 강제 동기 레이아웃(layout thrashing)의 발생 조건, 컴포지터 스레드와 레이어 승격의 비용 |
+| 7-2 | `docs/phase-7/02-network-deep-dive.md` | 브라우저와 네트워크의 통합: CORS의 동작 원리(preflight가 존재하는 이유, 단순 요청의 조건), 리소스 로딩 우선순위와 리소스 힌트(preload/preconnect/fetchpriority), CDN·프록시 계층에서의 캐시 운용 (HTTP 프로토콜 자체는 Phase 2 전제) |
+| 7-3 | `docs/phase-7/03-web-performance.md` | Core Web Vitals(LCP/CLS/INP)의 계측 원리, 로딩 워터폴 분석과 크리티컬 패스, 코드 스플리팅·리소스 힌트·이미지 최적화의 우선순위 판단 |
+| 7-4 | `docs/phase-7/04-web-security.md` | XSS 공격 벡터와 방어 계층(이스케이프, CSP, Trusted Types), CSRF와 SameSite 쿠키(쿠키 모델은 2-3 전제), 토큰 저장 위치의 트레이드오프(JWT vs 세션, localStorage vs httpOnly 쿠키) |
+| 7-5 | `docs/phase-7/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
+| 7-6 | `docs/phase-7/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
 
-**실습 과제**: Phase 5 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작.
+**실습 과제**: Phase 6 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작.
 
 ---
 
-### Phase 7 — 실전 프로젝트와 기술 검증 (3주+)
+### Phase 8 — 실전 프로젝트와 기술 검증 (3주+)
 
 **학습 목표**: 기획부터 배포까지 프로젝트를 완주하며 기술 의사결정을 문서로 남기고, 원리 수준의 기술 질문에 대응할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 7-1 | `docs/phase-7/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
-| 7-2 | `docs/phase-7/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
-| 7-3 | `docs/phase-7/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
-| 7-4 | `docs/phase-7/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
+| 8-1 | `docs/phase-8/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
+| 8-2 | `docs/phase-8/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
+| 8-3 | `docs/phase-8/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
+| 8-4 | `docs/phase-8/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
 
 **실습 과제**: 자유 주제 포트폴리오 프로젝트 완성(팀 프로젝트 권장). 주요 기술 선택마다 ADR을 남기고, 배포 및 회고를 작성한다.
 
@@ -198,12 +216,13 @@ web-fe-roadmap-study/
 ├── docs/
 │   ├── phase-0/            # 웹 플랫폼의 이해
 │   ├── phase-1/            # HTML & CSS — 파싱과 렌더링 모델
-│   ├── phase-2/            # JavaScript — 언어와 런타임
-│   ├── phase-3/            # TypeScript — 타입 시스템
-│   ├── phase-4/            # React — 렌더링 모델과 상태 아키텍처
-│   ├── phase-5/            # 도구의 내부 동작
-│   ├── phase-6/            # 브라우저·네트워크·보안 심화
-│   └── phase-7/            # 실전 프로젝트와 기술 검증
+│   ├── phase-2/            # HTTP — 프로토콜의 이해
+│   ├── phase-3/            # JavaScript — 언어와 런타임
+│   ├── phase-4/            # TypeScript — 타입 시스템
+│   ├── phase-5/            # React — 렌더링 모델과 상태 아키텍처
+│   ├── phase-6/            # 도구의 내부 동작
+│   ├── phase-7/            # 브라우저·네트워크·보안 심화
+│   └── phase-8/            # 실전 프로젝트와 기술 검증
 ├── plan/                   # Phase별 학습 기획 문서
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
@@ -228,11 +247,12 @@ web-fe-roadmap-study/
 |-------|--------|------|
 | Phase 0 — 웹 플랫폼의 이해 | 3 | ✅ 완료 |
 | Phase 1 — HTML & CSS | 7 | ✅ 완료 |
-| Phase 2 — JavaScript 언어와 런타임 | 10 | ⬜ 예정 |
-| Phase 3 — TypeScript 타입 시스템 | 5 | ⬜ 예정 |
-| Phase 4 — React 렌더링 모델 | 9 | ⬜ 예정 |
-| Phase 5 — 도구의 내부 동작 | 5 | ⬜ 예정 |
-| Phase 6 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
-| Phase 7 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
+| Phase 2 — HTTP 프로토콜의 이해 | 5 | ⬜ 예정 |
+| Phase 3 — JavaScript 언어와 런타임 | 10 | ⬜ 예정 |
+| Phase 4 — TypeScript 타입 시스템 | 5 | ⬜ 예정 |
+| Phase 5 — React 렌더링 모델 | 9 | ⬜ 예정 |
+| Phase 6 — 도구의 내부 동작 | 5 | ⬜ 예정 |
+| Phase 7 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
+| Phase 8 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
-**다음 단계**: Phase 2 문서부터 순서대로 작성합니다.
+**다음 단계**: Phase 2(HTTP) 문서부터 순서대로 작성합니다.
