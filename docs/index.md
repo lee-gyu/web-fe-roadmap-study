@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: Phase 1 보기
       link: /phase-1/01-html-basics
+    - theme: alt
+      text: Phase 2 보기
+      link: /phase-2/01-http-semantics
 
 features:
   - title: 원리 우선
@@ -28,7 +31,7 @@ features:
 |---|---|---|
 | Phase 0 | 웹 플랫폼의 이해 | 완료 |
 | Phase 1 | HTML & CSS: 파싱과 렌더링 모델 | 완료 |
-| Phase 2 | HTTP 프로토콜의 이해 | 예정 |
+| Phase 2 | HTTP 프로토콜의 이해 | 완료 |
 | Phase 3 | JavaScript 언어와 런타임 | 예정 |
 | Phase 4 | TypeScript 타입 시스템 | 예정 |
 | Phase 5 | React 렌더링 모델 | 예정 |
@@ -53,3 +56,11 @@ features:
 - [1-5. 반응형 디자인](./phase-1/05-responsive-design.md)
 - [1-6. CSS 심화](./phase-1/06-css-advanced.md)
 - [1-7. 웹 접근성](./phase-1/07-accessibility.md)
+
+### Phase 2. HTTP 프로토콜
+
+- [2-1. HTTP 의미론](./phase-2/01-http-semantics.md)
+- [2-2. HTTP 캐싱](./phase-2/02-http-caching.md)
+- [2-3. 쿠키와 상태](./phase-2/03-cookies-and-state.md)
+- [2-4. HTTP 버전](./phase-2/04-http-versions.md)
+- [2-5. HTTPS와 TLS](./phase-2/05-https-and-tls.md)

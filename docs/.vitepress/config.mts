@@ -12,6 +12,7 @@ export default defineConfig({
       { text: '홈', link: '/' },
       { text: 'Phase 0', link: '/phase-0/01-how-the-web-works' },
       { text: 'Phase 1', link: '/phase-1/01-html-basics' },
+      { text: 'Phase 2', link: '/phase-2/01-http-semantics' },
       { text: '로드맵', link: '/#전체-커리큘럼' },
     ],
     sidebar: [
@@ -35,6 +36,17 @@ export default defineConfig({
           { text: '1-5. 반응형 디자인', link: '/phase-1/05-responsive-design' },
           { text: '1-6. CSS 심화', link: '/phase-1/06-css-advanced' },
           { text: '1-7. 웹 접근성', link: '/phase-1/07-accessibility' },
+        ],
+      },
+      {
+        text: 'Phase 2. HTTP 프로토콜',
+        collapsed: false,
+        items: [
+          { text: '2-1. HTTP 의미론', link: '/phase-2/01-http-semantics' },
+          { text: '2-2. HTTP 캐싱', link: '/phase-2/02-http-caching' },
+          { text: '2-3. 쿠키와 상태', link: '/phase-2/03-cookies-and-state' },
+          { text: '2-4. HTTP 버전', link: '/phase-2/04-http-versions' },
+          { text: '2-5. HTTPS와 TLS', link: '/phase-2/05-https-and-tls' },
         ],
       },
     ],
