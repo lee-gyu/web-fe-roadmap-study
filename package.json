@@ -1,0 +1,16 @@
+{
+  "name": "@lee-gyu/web-fe-roadmap-study",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@11.10.0"
+}
