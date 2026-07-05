@@ -247,7 +247,7 @@ web-fe-roadmap-study/
 |-------|--------|------|
 | Phase 0 — 웹 플랫폼의 이해 | 3 | ✅ 완료 |
 | Phase 1 — HTML & CSS | 7 | ✅ 완료 |
-| Phase 2 — HTTP 프로토콜의 이해 | 5 | ⬜ 예정 |
+| Phase 2 — HTTP 프로토콜의 이해 | 5 | ✅ 완료 |
 | Phase 3 — JavaScript 언어와 런타임 | 10 | ⬜ 예정 |
 | Phase 4 — TypeScript 타입 시스템 | 5 | ⬜ 예정 |
 | Phase 5 — React 렌더링 모델 | 9 | ⬜ 예정 |
@@ -255,4 +255,4 @@ web-fe-roadmap-study/
 | Phase 7 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
 | Phase 8 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
-**다음 단계**: Phase 2(HTTP) 문서부터 순서대로 작성합니다.
+**다음 단계**: Phase 3(JavaScript) 문서부터 순서대로 작성합니다.

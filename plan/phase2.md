@@ -156,11 +156,11 @@ CLAUDE.md의 전 지침에 더해, Phase 2에서 특히 지킬 것:
 
 ## 6. 진행 체크리스트
 
-- [ ] 2-1 `01-http-semantics.md`
-- [ ] 2-2 `02-http-caching.md`
-- [ ] 2-3 `03-cookies-and-state.md`
-- [ ] 2-4 `04-http-versions.md`
-- [ ] 2-5 `05-https-and-tls.md`
-- [ ] `exercises/phase-2/` 과제 안내 문서
-- [ ] Phase 0-1 문서의 stale 참조(구 Phase 6-2 → 현 Phase 2) 수정
-- [ ] ROADMAP.md 5절 진행 현황 표 갱신
+- [x] 2-1 `01-http-semantics.md`
+- [x] 2-2 `02-http-caching.md`
+- [x] 2-3 `03-cookies-and-state.md`
+- [x] 2-4 `04-http-versions.md`
+- [x] 2-5 `05-https-and-tls.md`
+- [x] `exercises/phase-2/` 과제 안내 문서
+- [x] Phase 0-1 문서의 stale 참조(구 Phase 6-2 → 현 Phase 2) 수정 — phase-0·1 전체의 구 번호 체계 참조를 현행으로 일괄 수정
+- [x] ROADMAP.md 5절 진행 현황 표 갱신
