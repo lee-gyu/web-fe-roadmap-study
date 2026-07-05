@@ -41,26 +41,4 @@ features:
 
 ## 현재 읽을 수 있는 문서
 
-### Phase 0. 웹 플랫폼의 이해
-
-- [0-1. 주소창에서 픽셀까지: 웹의 동작 모델](./phase-0/01-how-the-web-works.md)
-- [0-2. 프론트엔드 툴체인의 지형](./phase-0/02-frontend-toolchain.md)
-- [0-3. 웹 표준과 브라우저 지형](./phase-0/03-web-standards-and-browsers.md)
-
-### Phase 1. HTML & CSS
-
-- [1-1. HTML 기초](./phase-1/01-html-basics.md)
-- [1-2. 시맨틱 HTML](./phase-1/02-semantic-html.md)
-- [1-3. CSS 기초](./phase-1/03-css-basics.md)
-- [1-4. CSS 레이아웃](./phase-1/04-css-layout.md)
-- [1-5. 반응형 디자인](./phase-1/05-responsive-design.md)
-- [1-6. CSS 심화](./phase-1/06-css-advanced.md)
-- [1-7. 웹 접근성](./phase-1/07-accessibility.md)
-
-### Phase 2. HTTP 프로토콜
-
-- [2-1. HTTP 의미론](./phase-2/01-http-semantics.md)
-- [2-2. HTTP 캐싱](./phase-2/02-http-caching.md)
-- [2-3. 쿠키와 상태](./phase-2/03-cookies-and-state.md)
-- [2-4. HTTP 버전](./phase-2/04-http-versions.md)
-- [2-5. HTTPS와 TLS](./phase-2/05-https-and-tls.md)
+<ReadableDocs />
