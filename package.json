@@ -7,10 +7,16 @@
   },
   "main": "index.js",
   "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  },
   "packageManager": "pnpm@11.10.0"
 }
