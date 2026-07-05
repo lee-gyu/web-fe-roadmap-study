@@ -5,6 +5,7 @@
 ## 학습 목표
 
 - HTML 파서가 잘못된 마크업을 만났을 때 무슨 일이 일어나는지 설명할 수 있다.
+- `<script>`의 로딩 전략(기본/`defer`/`async`)을 파싱 모델 위에서 판단할 수 있다.
 - 콘텐츠 모델(content model)을 근거로 요소 중첩의 유효성을 판단할 수 있다.
 - 폼 제출 시 브라우저가 만들어 보내는 데이터의 구조를 설명하고, 내장 검증을 활용할 수 있다.
 - HTML 속성(attribute)과 DOM 프로퍼티(property)의 차이를 설명할 수 있다.
@@ -38,6 +39,24 @@ XML을 다뤄 본 개발자라면 잘 안다. 태그 하나만 닫지 않아도 
 `<p>`는 흐름 콘텐츠 중 일부만 담을 수 있는데 `<div>`는 그 대상이 아니다. 파서는 `<div>` 시작 태그를 만나는 순간 열려 있던 `<p>`를 **강제로 닫는다**. 마지막의 `</p>`는 짝이 없으므로 빈 `<p>`가 하나 더 생긴다. 화면상으로는 비슷해 보여도, `p > div` 셀렉터는 영원히 아무것도 찾지 못하고, `p:first-child` 같은 구조 의존 스타일은 엉뚱하게 적용된다.
 
 `<table>` 내부에 직접 쓴 텍스트가 테이블 **바깥으로** 끌어올려지는 것(foster parenting), `<li>`가 다음 `<li>`를 만나면 자동으로 닫히는 것도 같은 부류다. 핵심은 이것이다: **내가 쓴 마크업과 브라우저가 만든 DOM은 다를 수 있다.** 의심되면 DevTools의 Elements 패널에서 실제 DOM을 확인한다. Elements 패널이 보여주는 것은 소스 코드가 아니라 파싱 결과다.
+
+### 파싱은 멈출 수 있다: 스크립트 로딩 전략
+
+파서는 문서를 위에서 아래로 스트리밍 처리한다 — 네트워크에서 바이트가 도착하는 대로 DOM을 만들어 나간다. 이 흐름을 끊는 유일한 존재가 `<script>`다. 파서는 스크립트를 만나면 **다운로드와 실행이 끝날 때까지 멈춘다**(parser blocking). 게을러서가 아니라 스펙상 멈춰야 한다: JavaScript는 `document.write`로 파서가 읽고 있는 토큰 스트림 자체를 바꿀 수 있으므로, 실행 결과를 보기 전에는 다음 토큰의 의미를 확정할 수 없다.
+
+이 설계는 스크립트가 커진 시대에 병목이 되었고, 두 가지 장치가 보완한다.
+
+- **프리로드 스캐너(preload scanner)** — 파서가 스크립트에 막혀 있는 동안, 별도의 가벼운 스캐너가 문서의 나머지를 훑어 `<img>`, `<link>`, `<script>` 등의 리소스 다운로드를 미리 시작한다. 파싱은 직렬이어도 네트워크는 병렬이 되는 이유다.
+- **`defer` / `async` 속성** — 파서를 멈추지 않겠다는 계약이다.
+
+| 방식 | 다운로드 | 실행 시점 | 순서 보장 |
+|------|---------|----------|----------|
+| `<script src>` (기본) | 파싱 중단 | 즉시 | 문서 순서 |
+| `<script defer src>` | 파싱과 병렬 | DOM 완성 직후(`DOMContentLoaded` 전) | 문서 순서 |
+| `<script async src>` | 파싱과 병렬 | 다운로드 완료 즉시(파싱 중일 수 있음) | **보장 없음** |
+| `<script type="module">` | 파싱과 병렬 | 기본이 defer와 동일 | 문서 순서 |
+
+판단 기준: DOM을 다루고 다른 스크립트와 순서 의존이 있는 애플리케이션 코드는 `defer`(사실상의 기본값), 무엇에도 의존하지 않는 독립 스크립트(analytics 등)만 `async`. "`</body>` 직전에 script를 두라"는 오래된 관행은 `defer`가 없던 시절의 우회로이며, 지금은 `<head>` + `defer`가 다운로드를 더 일찍 시작하므로 우월하다.
 
 ### 문서의 뼈대
 
@@ -136,9 +155,16 @@ HTML의 속성(attribute)은 마크업에 적힌 **문자열**이고, DOM 프로
 - **폼을 JS 이벤트 수집기로만 쓰는 안티패턴.** `<form>` 없이 `<div>` + `<input>` + 클릭 핸들러로 만든 "폼"은 Enter 키 제출, 내장 검증, 비밀번호 관리자 연동, 접근성이 전부 사라진다. fetch로 보내더라도 `<form>`의 `submit` 이벤트를 가로채는 방식이 표준이다.
 - **DevTools로 검증하는 습관.** Elements 패널에서 실제 DOM 구조를 열어 내가 쓴 마크업과 비교한다. 특히 테이블·리스트·중첩 폼 근처에서 마크업과 DOM이 어긋나 있는지 확인하는 것이 레이아웃 디버깅의 첫 단계다.
 
+## 더 깊이
+
+파서의 내부는 2단계 파이프라인이다. **토크나이저(tokenizer)** 가 바이트 스트림을 시작 태그·종료 태그·텍스트·주석 토큰으로 쪼개고, **트리 빌더(tree builder)** 가 토큰을 받아 DOM을 조립한다. 트리 빌더는 상태 기계로, 스펙은 이 상태를 **삽입 모드(insertion mode)** 라 부른다 — "in body", "in table", "in select" 등 현재 위치에 따라 같은 토큰도 다르게 처리된다. 본문의 오류 복구 규칙들은 전부 이 상태 기계의 전이 규칙으로 명세되어 있다. foster parenting도 그중 하나다: "in table" 모드에서 테이블 구조에 올 수 없는 토큰(맨 텍스트 등)을 만나면, 스펙은 그 노드를 테이블 **앞으로** 입양 보내라고 지시한다. 모든 브라우저가 같은 DOM을 만드는 이유는 이 상태 기계 전체가 표준이기 때문이다.
+
+`document.write`가 금기가 된 이유도 이 구조에서 나온다. 이 API는 토크나이저의 입력 스트림에 문자열을 직접 주입한다 — 파서가 실행 중일 때는 "현재 위치에 삽입"이지만, 파싱이 끝난 뒤(또는 `async` 스크립트에서) 호출하면 **문서를 통째로 열어 다시 쓰는** 동작이 되어 기존 DOM이 날아간다. 파서 재진입이라는 이 능력이 바로 파서가 스크립트마다 멈춰야 하는 원인이므로, `document.write`를 쓰지 않는 것은 스타일 문제가 아니라 파이프라인 전체의 병목을 제거하는 일이다. 크롬은 느린 네트워크에서 파서 삽입 방식의 외부 스크립트 `document.write`를 아예 무시하기도 한다.
+
 ## 정리
 
 - HTML 파서는 오류를 거부하지 않고 표준화된 규칙으로 복구한다. 따라서 **작성한 마크업과 생성된 DOM은 다를 수 있고**, 디버깅은 DOM을 기준으로 한다.
+- 파서는 `<script>`에서 멈춘다. 애플리케이션 스크립트는 `<head>` + `defer`가 기본이고, 순서 무관한 독립 스크립트만 `async`를 쓴다.
 - `<!DOCTYPE html>`은 쿼크 모드를 끄는 렌더링 스위치다.
 - 요소 중첩의 유효성은 콘텐츠 카테고리로 판단한다. 특히 `<p>`의 내용 제한과 인터랙티브 요소 중첩 금지가 실무에서 자주 걸린다.
 - `<form>`은 name 기반 데이터 수집, 인코딩, 내장 검증까지 갖춘 전송 계층이다. `name` 없는 입력은 전송되지 않고, 폼 안 `<button>`의 기본 타입은 `submit`이다.
@@ -184,10 +210,19 @@ HTML의 속성(attribute)은 마크업에 적힌 **문자열**이고, DOM 프로
 마크업에는 `checked` 속성이 없었고(초기 상태 미체크), 이후 사용자가 클릭했거나 JS가 `el.checked = true`로 프로퍼티를 변경한 상황이다. 속성은 마크업에 적힌 초기값을 반영할 뿐 프로퍼티 변경을 따라가지 않으므로 둘이 어긋날 수 있다.
 </details>
 
+**4.** 레거시 코드가 `</body>` 직전에 `<script src="app.js">`를 두고 있다. 이를 `<head>`의 `<script defer src="app.js">`로 바꾸자는 제안에 "어차피 둘 다 DOM 완성 후 실행이니 차이가 없다"는 반론이 나왔다. 반박하라.
+
+<details>
+<summary>정답과 해설</summary>
+
+실행 시점은 사실상 같지만 **다운로드 시작 시점**이 다르다. `<head>`의 defer 스크립트는 파싱 극초반에 발견되어 문서 파싱과 병렬로 다운로드된다. body 끝의 스크립트는 파서(또는 프리로드 스캐너)가 문서 끝까지 도달해야 발견되므로, 문서가 크거나 네트워크가 느릴수록 다운로드 시작이 늦어진다. 결과적으로 스크립트 실행 완료 시점은 `<head>` + `defer` 쪽이 같거나 빠르며, 나쁜 조건일수록 격차가 벌어진다.
+</details>
+
 ## 참고 자료
 
 - [HTML Living Standard — Content models](https://html.spec.whatwg.org/multipage/dom.html#content-models) — 콘텐츠 카테고리의 원 정의. 요소별 허용 콘텐츠를 확인하는 1차 자료.
-- [HTML Living Standard — Parsing: An introduction to error handling](https://html.spec.whatwg.org/multipage/parsing.html#an-introduction-to-error-handling-and-strange-cases-in-the-parser) — 파서 오류 복구 규칙이 실제로 표준화되어 있음을 보여주는 스펙 본문.
+- [HTML Living Standard — Parsing: An introduction to error handling](https://html.spec.whatwg.org/multipage/parsing.html#an-introduction-to-error-handling-and-strange-cases-in-the-parser) — 파서 오류 복구 규칙이 실제로 표준화되어 있음을 보여주는 스펙 본문. 삽입 모드 상태 기계 전체도 이 장에 있다.
+- [MDN — script 요소의 defer/async](https://developer.mozilla.org/ko/docs/Web/HTML/Element/script) — 로딩 전략별 다운로드·실행 시점의 정확한 정의.
 - [MDN — HTML elements reference](https://developer.mozilla.org/ko/docs/Web/HTML/Element) — 개별 태그의 용법·허용 콘텐츠·브라우저 지원을 찾을 때의 기본 레퍼런스.
 - [MDN — Client-side form validation](https://developer.mozilla.org/ko/docs/Learn/Forms/Form_validation) — 내장 검증 속성과 Constraint Validation API 정리.
 - [Nu Html Checker](https://validator.w3.org/nu/) — 마크업 유효성 검사기. 파서 복구에 의존하고 있는 지점을 찾아 준다.
