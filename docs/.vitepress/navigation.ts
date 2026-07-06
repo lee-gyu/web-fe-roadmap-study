@@ -106,8 +106,7 @@ export function buildNav(): DefaultTheme.NavItem[] {
 
   return [
     { text: '홈', link: '/' },
-    { text: '문서', items: documentItems },
-    { text: '로드맵', link: '/#전체-커리큘럼' },
+    { text: '문서', items: documentItems }
   ];
 }
 
