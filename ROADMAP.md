@@ -11,7 +11,7 @@
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 총 약 29주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 기간 | 총 약 31주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
 | 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상 |
 
@@ -37,7 +37,8 @@ flowchart LR
     P5 --> P6["Phase 6<br/>도구의<br/>내부 동작"]
     P6 --> P7["Phase 7<br/>Git<br/>변경 이력과 협업"]
     P7 --> P8["Phase 8<br/>브라우저·네트워크·보안<br/>심화"]
-    P8 --> P9["Phase 9<br/>실전 프로젝트와<br/>기술 검증"]
+    P8 --> P9["Phase 9<br/>설계 패턴<br/>JavaScript·React"]
+    P9 --> P10["Phase 10<br/>실전 프로젝트와<br/>기술 검증"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
@@ -51,7 +52,8 @@ flowchart LR
 | 6 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
 | 7 | Git — 변경 이력과 협업 모델 | 3주 | Git 운영 플레이북, 충돌 해결·이력 복구 리포트 |
 | 8 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
-| 9 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
+| 9 | 설계 패턴 — JavaScript와 React 컴포넌트 패턴 | 2주 | 패턴 리팩터링 리포트, React 컴포넌트 패턴 샘플 |
+| 10 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
 
 ---
 
@@ -214,18 +216,35 @@ flowchart LR
 
 ---
 
-### Phase 9 — 실전 프로젝트와 기술 검증 (3주+)
+### Phase 9 — 설계 패턴: JavaScript와 React 컴포넌트 패턴 (2주)
+
+**학습 목표**: JavaScript의 객체·함수·모듈 모델 위에서 자주 쓰이는 설계 패턴을 해석하고, React 함수 컴포넌트의 합성·상태·로직 재사용 패턴을 트레이드오프에 따라 선택할 수 있다.
+
+| # | 문서 | 주요 내용 |
+|---|------|----------|
+| 9-1 | `docs/phase-9/01-patterns-as-design-vocabulary.md` | 패턴을 설계 어휘로 쓰는 법: GoF 패턴을 JavaScript에 그대로 이식할 때 생기는 왜곡, 언어 기능(클로저·프로토타입·모듈·일급 함수)이 패턴의 형태를 바꾸는 이유, 패턴 적용 판단 기준 |
+| 9-2 | `docs/phase-9/02-creational-and-composition-patterns.md` | 생성·구성 패턴: factory, builder, module, singleton, dependency injection을 JavaScript/TypeScript에서 구현하는 방식과 테스트 가능성·전역 상태·번들 경계의 트레이드오프 |
+| 9-3 | `docs/phase-9/03-behavioral-patterns.md` | 행위 패턴: strategy, command, observer/pub-sub, state, iterator/generator. 이벤트 기반 UI와 비동기 흐름에서 패턴이 복잡도를 낮추거나 오히려 숨기는 조건 |
+| 9-4 | `docs/phase-9/04-structural-and-boundary-patterns.md` | 구조·경계 패턴: adapter, facade, proxy, decorator, middleware/chain of responsibility. 외부 API·브라우저 API·레거시 코드와의 경계를 안정화하는 방법 |
+| 9-5 | `docs/phase-9/05-react-composition-patterns.md` | React 함수 컴포넌트 합성 패턴: children-as-slot, compound components, controlled/uncontrolled components, polymorphic component, context 기반 합성의 리렌더 비용 |
+| 9-6 | `docs/phase-9/06-react-logic-and-state-patterns.md` | React 로직 재사용과 상태 패턴: custom hook, reducer + context, provider boundary, external store adapter, function-as-children. 클래스 컴포넌트 패턴은 역사적 맥락으로만 다룸 |
+
+**실습 과제**: 기존 JavaScript/React 코드를 골라 패턴 후보를 찾고, 최소 3개 패턴을 적용하거나 적용하지 않기로 결정한 근거를 리팩터링 리포트로 남긴다. 함수 컴포넌트만 사용해 compound component 또는 controlled/uncontrolled 패턴을 포함한 작은 컴포넌트 샘플을 제작한다. 상세 기준은 [exercises/phase-9](exercises/phase-9/README.md) 참고.
+
+---
+
+### Phase 10 — 실전 프로젝트와 기술 검증 (3주+)
 
 **학습 목표**: 기획부터 배포까지 프로젝트를 완주하며 기술 의사결정을 문서로 남기고, 원리 수준의 기술 질문에 대응할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 9-1 | `docs/phase-9/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
-| 9-2 | `docs/phase-9/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
-| 9-3 | `docs/phase-9/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
-| 9-4 | `docs/phase-9/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
+| 10-1 | `docs/phase-10/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
+| 10-2 | `docs/phase-10/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
+| 10-3 | `docs/phase-10/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
+| 10-4 | `docs/phase-10/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
 
-**실습 과제**: 자유 주제 포트폴리오 프로젝트 완성(팀 프로젝트 권장). 주요 기술 선택마다 ADR을 남기고, 배포 및 회고를 작성한다. 상세 기준은 [exercises/phase-9](exercises/phase-9/README.md) 참고.
+**실습 과제**: 자유 주제 포트폴리오 프로젝트 완성(팀 프로젝트 권장). 주요 기술 선택마다 ADR을 남기고, 배포 및 회고를 작성한다. 상세 기준은 [exercises/phase-10](exercises/phase-10/README.md) 참고.
 
 ---
 
@@ -244,7 +263,8 @@ web-fe-roadmap-study/
 │   ├── phase-6/            # 도구의 내부 동작
 │   ├── phase-7/            # Git — 변경 이력과 협업 모델
 │   ├── phase-8/            # 브라우저·네트워크·보안 심화
-│   └── phase-9/            # 실전 프로젝트와 기술 검증
+│   ├── phase-9/            # 설계 패턴 — JavaScript와 React 컴포넌트 패턴
+│   └── phase-10/           # 실전 프로젝트와 기술 검증
 ├── plan/                   # Phase별 학습 기획 문서
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
@@ -276,6 +296,7 @@ web-fe-roadmap-study/
 | Phase 6 — 도구의 내부 동작 | 5 | ✅ 완료 |
 | Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ✅ 완료 |
-| Phase 9 — 실전 프로젝트와 기술 검증 | 4 | ✅ 완료 |
+| Phase 9 — 설계 패턴 | 6 | ✅ 완료 |
+| Phase 10 — 실전 프로젝트와 기술 검증 | 4 | ✅ 완료 |
 
-**다음 단계**: Phase 9(실전 프로젝트와 기술 검증) 문서 4개와 실습 과제 안내가 완료되었습니다. 이후에는 전체 문서 링크 점검, 예제 검증, VitePress 배포 점검을 진행합니다.
+**다음 단계**: Phase 9 실습 과제를 수행하며 패턴 리팩터링 리포트와 React 함수 컴포넌트 패턴 샘플을 검증합니다. 기존 실전 프로젝트와 기술 검증 과정은 Phase 10으로 이동되었습니다.
