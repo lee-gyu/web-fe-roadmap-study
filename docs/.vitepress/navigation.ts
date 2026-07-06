@@ -26,6 +26,7 @@ const PHASE_LABELS: Record<number, string> = {
   0: 'Phase 0. 웹 플랫폼의 이해',
   1: 'Phase 1. HTML & CSS',
   2: 'Phase 2. HTTP 프로토콜',
+  3: 'Phase 3. JavaScript 언어와 런타임',
 };
 
 function phaseLabel(phase: number): string {

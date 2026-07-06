@@ -32,7 +32,7 @@ features:
 | Phase 0 | 웹 플랫폼의 이해 | 완료 |
 | Phase 1 | HTML & CSS: 파싱과 렌더링 모델 | 완료 |
 | Phase 2 | HTTP 프로토콜의 이해 | 완료 |
-| Phase 3 | JavaScript 언어와 런타임 | 예정 |
+| Phase 3 | JavaScript 언어와 런타임 | 완료 |
 | Phase 4 | TypeScript 타입 시스템 | 예정 |
 | Phase 5 | React 렌더링 모델 | 예정 |
 | Phase 6 | 도구의 내부 동작 | 예정 |

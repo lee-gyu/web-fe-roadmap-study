@@ -250,16 +250,16 @@ CLAUDE.md의 전 지침에 더해, Phase 3에서 특히 지킬 것:
 
 ## 6. 진행 체크리스트
 
-- [ ] 3-1 `01-execution-model.md`
-- [ ] 3-2 `02-closures-and-functions.md`
-- [ ] 3-3 `03-types-and-coercion.md`
-- [ ] 3-4 `04-object-model.md`
-- [ ] 3-5 `05-event-loop.md`
-- [ ] 3-6 `06-promises-and-async.md`
-- [ ] 3-7 `07-dom-and-events.md`
-- [ ] 3-8 `08-network-apis.md`
-- [ ] 3-9 `09-modules.md`
-- [ ] 3-10 `10-memory-and-storage.md`
+- [x] 3-1 `01-execution-model.md`
+- [x] 3-2 `02-closures-and-functions.md`
+- [x] 3-3 `03-types-and-coercion.md`
+- [x] 3-4 `04-object-model.md`
+- [x] 3-5 `05-event-loop.md`
+- [x] 3-6 `06-promises-and-async.md`
+- [x] 3-7 `07-dom-and-events.md`
+- [x] 3-8 `08-network-apis.md`
+- [x] 3-9 `09-modules.md`
+- [x] 3-10 `10-memory-and-storage.md`
 - [ ] `exercises/phase-3/` 과제 안내 문서
-- [ ] 선행 문서(0-2 DevTools 표, 1-1 속성 vs 프로퍼티, 2-1 fetch 위임)의 Phase 3 참조가 실제 문서 번호·내용과 일치하는지 집필 시 확인
-- [ ] ROADMAP.md 5절 진행 현황 표 갱신
+- [x] 선행 문서(0-2 DevTools 표, 1-1 속성 vs 프로퍼티, 2-1 fetch 위임)의 Phase 3 참조가 실제 문서 번호·내용과 일치하는지 집필 시 확인 — 0-2의 3-5/3-10 표, 1-1의 3-7 위임, 2-1의 3-8 위임 모두 해당 문서에서 이행함
+- [x] ROADMAP.md 5절 진행 현황 표 갱신
