@@ -20,3 +20,4 @@
 - Phase 10 — 실전 프로젝트와 기술 검증
 - Phase 11 — AI 에이전트 활용
 - 부록 A — 사고법과 경험 법칙
+    - 출처: <https://github.com/dwmkerr/hacker-laws>
