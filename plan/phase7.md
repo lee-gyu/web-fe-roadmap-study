@@ -238,13 +238,13 @@ CLAUDE.md의 전 지침에 더해, Phase 7에서 특히 지킬 것:
 
 ## 6. 진행 체크리스트
 
-- [ ] 7-1 `01-git-mental-model.md`
-- [ ] 7-2 `02-objects-refs-and-commits.md`
-- [ ] 7-3 `03-staging-diff-and-commit-design.md`
-- [ ] 7-4 `04-branching-merging-and-conflicts.md`
-- [ ] 7-5 `05-remotes-fetch-pull-push.md`
-- [ ] 7-6 `06-rewriting-history-and-recovery.md`
-- [ ] 7-7 `07-collaboration-workflows.md`
-- [ ] 7-8 `08-release-debugging-and-repo-operations.md`
-- [ ] `exercises/phase-7/` 과제 안내 문서
-- [ ] ROADMAP.md 5절 진행 현황 표 갱신
+- [x] 7-1 `01-git-mental-model.md`
+- [x] 7-2 `02-objects-refs-and-commits.md`
+- [x] 7-3 `03-staging-diff-and-commit-design.md`
+- [x] 7-4 `04-branching-merging-and-conflicts.md`
+- [x] 7-5 `05-remotes-fetch-pull-push.md`
+- [x] 7-6 `06-rewriting-history-and-recovery.md`
+- [x] 7-7 `07-collaboration-workflows.md`
+- [x] 7-8 `08-release-debugging-and-repo-operations.md`
+- [x] `exercises/phase-7/` 과제 안내 문서
+- [x] ROADMAP.md 5절 진행 현황 표 갱신

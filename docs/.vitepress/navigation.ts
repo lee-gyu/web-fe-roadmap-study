@@ -29,6 +29,10 @@ const PHASE_LABELS: Record<number, string> = {
   3: 'Phase 3. JavaScript 언어와 런타임',
   4: 'Phase 4. TypeScript 타입 시스템',
   5: 'Phase 5. React 렌더링 모델',
+  6: 'Phase 6. 도구의 내부 동작',
+  7: 'Phase 7. Git 변경 이력과 협업 모델',
+  8: 'Phase 8. 브라우저·네트워크·보안 심화',
+  9: 'Phase 9. 실전 프로젝트와 기술 검증',
 };
 
 function phaseLabel(phase: number): string {

@@ -193,7 +193,7 @@ flowchart LR
 | 7-7 | `docs/phase-7/07-collaboration-workflows.md` | **[심화]** trunk-based development, GitHub Flow, Git Flow의 브랜치 수명과 통합 비용 비교, pull request와 code review의 실제 목적, protected branch·CODEOWNERS·CI gate로 정책을 자동화하는 법 |
 | 7-8 | `docs/phase-7/08-release-debugging-and-repo-operations.md` | **[심화]** tag와 release branch, hotfix 운용, `bisect`/`blame`/`log --graph`로 회귀를 추적하는 법, submodule/subtree/worktree/LFS 선택 기준, packfile·GC·signed commit이 필요한 상황 |
 
-**실습 과제**: 작은 기능 개발 저장소를 만들고 intentional conflict, 잘못된 rebase, 잘못된 force push 시나리오를 재현한다. 각 상황에서 커밋 그래프가 어떻게 바뀌었는지 `log --graph`, reflog, 원격 브랜치 상태로 분석하고, 팀 협업 규칙(브랜치 전략·리뷰 기준·릴리스 태그·복구 절차)을 담은 Git 운영 플레이북을 작성한다.
+**실습 과제**: 작은 기능 개발 저장소를 만들고 intentional conflict, 잘못된 rebase, 잘못된 force push 시나리오를 재현한다. 각 상황에서 커밋 그래프가 어떻게 바뀌었는지 `log --graph`, reflog, 원격 브랜치 상태로 분석하고, 팀 협업 규칙(브랜치 전략·리뷰 기준·릴리스 태그·복구 절차)을 담은 Git 운영 플레이북을 작성한다. 상세 기준은 [exercises/phase-7](exercises/phase-7/README.md) 참고.
 
 ---
 
@@ -274,8 +274,8 @@ web-fe-roadmap-study/
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
 | Phase 6 — 도구의 내부 동작 | 5 | ⬜ 예정 |
-| Phase 7 — Git 변경 이력과 협업 모델 | 8 | ⬜ 예정 |
+| Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
 | Phase 9 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
-**다음 단계**: Phase 6(도구의 내부 동작) 학습 기획(`plan/phase6.md`)이 완료되었습니다. 이 기획의 집필 순서(6-1 → 6-5)에 따라 Phase 6 문서를 순서대로 작성합니다.
+**다음 단계**: Phase 7(Git 변경 이력과 협업 모델) 문서와 실습 과제 안내가 완료되었습니다. Phase 6 문서가 아직 예정 상태이므로, 순서 정합성을 맞추려면 Phase 6 문서 작성 후 Phase 8 기획·집필로 이어갑니다.
