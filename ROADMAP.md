@@ -174,7 +174,7 @@ flowchart LR
 | 6-4 | `docs/phase-6/04-testing-strategy.md` | 무엇을 테스트할 것인가(테스팅 트로피, 구현 상세 vs 동작), React Testing Library의 쿼리 철학, mock의 비용과 경계, Vitest 동작 구조 |
 | 6-5 | `docs/phase-6/05-ci-and-deployment.md` | CI 파이프라인 설계(캐싱, 병렬화), 미리보기 배포의 동작, 정적 호스팅과 CDN 캐시 무효화 전략(HTTP 캐싱 모델(2-2) 위에서) |
 
-**실습 과제**: Phase 5 프로젝트에 린트/포맷/테스트/CI/자동 배포를 적용한다. 번들 분석 도구로 산출물을 열어 트리 셰이킹 여부와 청크 구성을 검증한다.
+**실습 과제**: Phase 5 프로젝트에 린트/포맷/테스트/CI/자동 배포를 적용한다. 번들 분석 도구로 산출물을 열어 트리 셰이킹 여부와 청크 구성을 검증한다. 상세 기준은 [exercises/phase-6](exercises/phase-6/README.md) 참고.
 
 ---
 
@@ -273,9 +273,9 @@ web-fe-roadmap-study/
 | Phase 3 — JavaScript 언어와 런타임 | 10 | ✅ 완료 |
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
-| Phase 6 — 도구의 내부 동작 | 5 | ⬜ 예정 |
+| Phase 6 — 도구의 내부 동작 | 5 | ✅ 완료 |
 | Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
 | Phase 9 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
-**다음 단계**: Phase 7(Git 변경 이력과 협업 모델) 문서와 실습 과제 안내가 완료되었습니다. Phase 6 문서가 아직 예정 상태이므로, 순서 정합성을 맞추려면 Phase 6 문서 작성 후 Phase 8 기획·집필로 이어갑니다.
+**다음 단계**: Phase 6(도구의 내부 동작)과 Phase 7(Git 변경 이력과 협업 모델) 문서와 실습 과제 안내가 완료되었습니다. 다음 순서는 Phase 8(브라우저·네트워크·보안 심화) 기획·집필입니다.
