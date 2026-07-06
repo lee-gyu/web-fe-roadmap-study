@@ -10,18 +10,18 @@
 | 항목 | 내용 |
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
-| 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 총 약 26주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
-| 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js |
-| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + 최종 포트폴리오 프로젝트 2개 이상 |
+| 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
+| 기간 | 총 약 29주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
+| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상 |
 
 ### 학습 원칙
 
 1. **원리 우선** — API 사용법이 아니라 그 아래의 동작 모델(파서, 엔진, 런타임, 네트워크)을 먼저 세운다. 사용법은 모델의 표현으로 익힌다.
 2. **트레이드오프 중심** — 모든 기술 선택에는 비용이 있다. "무엇을 쓸까"가 아니라 "이 상황에서 각 선택이 무엇을 얻고 무엇을 포기하는가"를 판단 기준으로 삼는다.
 3. **경계 조건 탐색** — 추상화가 무너지는 지점(성능 급락, 스펙의 한계, 프레임워크의 탈출구)을 의도적으로 찾아가며 학습한다.
-4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC)과 공식 문서를 1차 자료로 삼고, 통념과 스펙이 다르면 스펙으로 검증한다.
-5. **만들며 검증하기** — 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측·분석으로 왜 그렇게 동작하는지까지 확인한다.
+4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC), Git 공식 문서, 각 도구의 공식 문서를 1차 자료로 삼고, 통념과 1차 자료가 다르면 1차 자료로 검증한다.
+5. **만들며 검증하기** — 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다.
 
 ---
 
@@ -35,8 +35,9 @@ flowchart LR
     P3 --> P4["Phase 4<br/>TypeScript<br/>타입 시스템"]
     P4 --> P5["Phase 5<br/>React<br/>렌더링 모델"]
     P5 --> P6["Phase 6<br/>도구의<br/>내부 동작"]
-    P6 --> P7["Phase 7<br/>브라우저·네트워크<br/>심화"]
-    P7 --> P8["Phase 8<br/>실전 프로젝트와<br/>기술 검증"]
+    P6 --> P7["Phase 7<br/>Git<br/>변경 이력과 협업"]
+    P7 --> P8["Phase 8<br/>브라우저·네트워크·보안<br/>심화"]
+    P8 --> P9["Phase 9<br/>실전 프로젝트와<br/>기술 검증"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
@@ -48,8 +49,9 @@ flowchart LR
 | 4 | TypeScript — 타입 시스템 | 2주 | JS 프로젝트의 TS 마이그레이션 + 타입 설계 문서 |
 | 5 | React — 렌더링 모델과 상태 아키텍처 | 5주 | React SPA (리렌더 분석 리포트 포함) |
 | 6 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
-| 7 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
-| 8 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
+| 7 | Git — 변경 이력과 협업 모델 | 3주 | Git 운영 플레이북, 충돌 해결·이력 복구 리포트 |
+| 8 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
+| 9 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
 
 ---
 
@@ -57,7 +59,7 @@ flowchart LR
 
 ### Phase 0 — 웹 플랫폼의 이해 (1주)
 
-**학습 목표**: 주소창 입력부터 화면의 픽셀까지 전체 파이프라인의 큰 그림을 세우고, 웹 표준이 만들어지고 브라우저에 구현되는 구조를 이해한다. (Git·터미널 등 일반 개발 도구는 경력자 전제로 다루지 않는다.)
+**학습 목표**: 주소창 입력부터 화면의 픽셀까지 전체 파이프라인의 큰 그림을 세우고, 웹 표준이 만들어지고 브라우저에 구현되는 구조를 이해한다. (터미널 등 일반 개발 도구는 경력자 전제로 다루지 않는다. Git의 변경 이력·협업 모델은 Phase 7에서 별도로 다룬다.)
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
@@ -176,33 +178,52 @@ flowchart LR
 
 ---
 
-### Phase 7 — 브라우저·네트워크·보안 심화 (3주)
+### Phase 7 — Git: 변경 이력과 협업 모델 (3주)
+
+**학습 목표**: Git을 명령어 모음이 아니라 객체 데이터베이스·참조(ref)·인덱스(index)·커밋 DAG로 이해하고, 개인 작업부터 팀 협업·릴리스·이력 복구까지 근거 있는 운영 결정을 내릴 수 있다.
+
+| # | 문서 | 주요 내용 |
+|---|------|----------|
+| 7-1 | `docs/phase-7/01-git-mental-model.md` | **[기초]** Git이 추적하는 것과 추적하지 않는 것: 작업 트리(working tree), 인덱스, 로컬 저장소의 역할 분리, 스냅샷 모델이 diff 저장 방식과 어떻게 다른지, `.git` 디렉터리의 최소 구조 |
+| 7-2 | `docs/phase-7/02-objects-refs-and-commits.md` | **[기초→심화]** blob/tree/commit/tag 객체와 해시 주소화(content-addressing), HEAD와 브랜치가 가리키는 참조(ref)의 실체, 커밋 DAG를 읽는 법, detached HEAD가 위험해 보이는 이유와 실제 의미 |
+| 7-3 | `docs/phase-7/03-staging-diff-and-commit-design.md` | **[기초]** `git add`가 파일을 "저장"하는 것이 아니라 인덱스 스냅샷을 구성하는 방식, `diff`/`status`를 세 계층 관점에서 해석하기, 의미 있는 커밋 단위와 메시지 작성 기준, `add -p`로 변경을 분할하는 법 |
+| 7-4 | `docs/phase-7/04-branching-merging-and-conflicts.md` | **[기초→심화]** 브랜치는 커밋을 가리키는 이동 가능한 포인터라는 모델, fast-forward와 merge commit의 차이, 3-way merge와 충돌 마커가 만들어지는 조건, 충돌 해결 전략과 `rerere`의 비용-편익 |
+| 7-5 | `docs/phase-7/05-remotes-fetch-pull-push.md` | **[기초]** 원격 저장소(remote)는 특별한 중앙 서버가 아니라 다른 저장소라는 관점, remote-tracking branch와 upstream, `fetch`/`pull`/`push`의 참조 갱신 규칙, refspec, force push가 협업에서 위험해지는 경계 |
+| 7-6 | `docs/phase-7/06-rewriting-history-and-recovery.md` | **[심화]** `commit --amend`, `reset`, `restore`, `revert`, `cherry-pick`, rebase가 커밋 그래프를 어떻게 바꾸는지, interactive rebase로 이력을 정리하는 법, reflog와 `fsck`를 이용한 복구, 공개 이력 재작성의 판단 기준 |
+| 7-7 | `docs/phase-7/07-collaboration-workflows.md` | **[심화]** trunk-based development, GitHub Flow, Git Flow의 브랜치 수명과 통합 비용 비교, pull request와 code review의 실제 목적, protected branch·CODEOWNERS·CI gate로 정책을 자동화하는 법 |
+| 7-8 | `docs/phase-7/08-release-debugging-and-repo-operations.md` | **[심화]** tag와 release branch, hotfix 운용, `bisect`/`blame`/`log --graph`로 회귀를 추적하는 법, submodule/subtree/worktree/LFS 선택 기준, packfile·GC·signed commit이 필요한 상황 |
+
+**실습 과제**: 작은 기능 개발 저장소를 만들고 intentional conflict, 잘못된 rebase, 잘못된 force push 시나리오를 재현한다. 각 상황에서 커밋 그래프가 어떻게 바뀌었는지 `log --graph`, reflog, 원격 브랜치 상태로 분석하고, 팀 협업 규칙(브랜치 전략·리뷰 기준·릴리스 태그·복구 절차)을 담은 Git 운영 플레이북을 작성한다.
+
+---
+
+### Phase 8 — 브라우저·네트워크·보안 심화 (3주)
 
 **학습 목표**: 렌더링 파이프라인·네트워크·보안 모델을 계층 수준에서 이해하고, 성능·보안·렌더링 전략을 측정과 근거에 기반해 결정할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 7-1 | `docs/phase-7/01-browser-rendering.md` | 스타일 재계산→레이아웃→페인트→합성 파이프라인, 강제 동기 레이아웃(layout thrashing)의 발생 조건, 컴포지터 스레드와 레이어 승격의 비용 |
-| 7-2 | `docs/phase-7/02-network-deep-dive.md` | 브라우저와 네트워크의 통합: CORS의 동작 원리(preflight가 존재하는 이유, 단순 요청의 조건), 리소스 로딩 우선순위와 리소스 힌트(preload/preconnect/fetchpriority), CDN·프록시 계층에서의 캐시 운용 (HTTP 프로토콜 자체는 Phase 2 전제) |
-| 7-3 | `docs/phase-7/03-web-performance.md` | Core Web Vitals(LCP/CLS/INP)의 계측 원리, 로딩 워터폴 분석과 크리티컬 패스, 코드 스플리팅·리소스 힌트·이미지 최적화의 우선순위 판단 |
-| 7-4 | `docs/phase-7/04-web-security.md` | XSS 공격 벡터와 방어 계층(이스케이프, CSP, Trusted Types), CSRF와 SameSite 쿠키(쿠키 모델은 2-3 전제), 토큰 저장 위치의 트레이드오프(JWT vs 세션, localStorage vs httpOnly 쿠키) |
-| 7-5 | `docs/phase-7/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
-| 7-6 | `docs/phase-7/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
+| 8-1 | `docs/phase-8/01-browser-rendering.md` | 스타일 재계산→레이아웃→페인트→합성 파이프라인, 강제 동기 레이아웃(layout thrashing)의 발생 조건, 컴포지터 스레드와 레이어 승격의 비용 |
+| 8-2 | `docs/phase-8/02-network-deep-dive.md` | 브라우저와 네트워크의 통합: CORS의 동작 원리(preflight가 존재하는 이유, 단순 요청의 조건), 리소스 로딩 우선순위와 리소스 힌트(preload/preconnect/fetchpriority), CDN·프록시 계층에서의 캐시 운용 (HTTP 프로토콜 자체는 Phase 2 전제) |
+| 8-3 | `docs/phase-8/03-web-performance.md` | Core Web Vitals(LCP/CLS/INP)의 계측 원리, 로딩 워터폴 분석과 크리티컬 패스, 코드 스플리팅·리소스 힌트·이미지 최적화의 우선순위 판단 |
+| 8-4 | `docs/phase-8/04-web-security.md` | XSS 공격 벡터와 방어 계층(이스케이프, CSP, Trusted Types), CSRF와 SameSite 쿠키(쿠키 모델은 2-3 전제), 토큰 저장 위치의 트레이드오프(JWT vs 세션, localStorage vs httpOnly 쿠키) |
+| 8-5 | `docs/phase-8/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
+| 8-6 | `docs/phase-8/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
 
 **실습 과제**: Phase 6 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작.
 
 ---
 
-### Phase 8 — 실전 프로젝트와 기술 검증 (3주+)
+### Phase 9 — 실전 프로젝트와 기술 검증 (3주+)
 
 **학습 목표**: 기획부터 배포까지 프로젝트를 완주하며 기술 의사결정을 문서로 남기고, 원리 수준의 기술 질문에 대응할 수 있다.
 
 | # | 문서 | 주요 내용 |
 |---|------|----------|
-| 8-1 | `docs/phase-8/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
-| 8-2 | `docs/phase-8/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
-| 8-3 | `docs/phase-8/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
-| 8-4 | `docs/phase-8/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
+| 9-1 | `docs/phase-9/01-project-guide.md` | 프로젝트 기획과 요구사항 정의, 기술 선택의 근거를 남기는 법(ADR), 일정 관리와 협업 워크플로 |
+| 9-2 | `docs/phase-9/02-code-quality-and-review.md` | 코드 리뷰의 관점(정합성·설계·성능·경계 조건), 리팩터링 전략, 폴더 구조와 아키텍처 경계의 트레이드오프 |
+| 9-3 | `docs/phase-9/03-portfolio-and-resume.md` | 깊이가 드러나는 포트폴리오(문제→접근→측정된 결과 구조), README 작성, 이력서 |
+| 9-4 | `docs/phase-9/04-interview-prep.md` | 원리 기반 기술 면접 대응 — 각 Phase에서 다룬 "왜"를 면접 답변으로 전환하기, 시스템 설계형 프론트엔드 질문 |
 
 **실습 과제**: 자유 주제 포트폴리오 프로젝트 완성(팀 프로젝트 권장). 주요 기술 선택마다 ADR을 남기고, 배포 및 회고를 작성한다.
 
@@ -221,8 +242,9 @@ web-fe-roadmap-study/
 │   ├── phase-4/            # TypeScript — 타입 시스템
 │   ├── phase-5/            # React — 렌더링 모델과 상태 아키텍처
 │   ├── phase-6/            # 도구의 내부 동작
-│   ├── phase-7/            # 브라우저·네트워크·보안 심화
-│   └── phase-8/            # 실전 프로젝트와 기술 검증
+│   ├── phase-7/            # Git — 변경 이력과 협업 모델
+│   ├── phase-8/            # 브라우저·네트워크·보안 심화
+│   └── phase-9/            # 실전 프로젝트와 기술 검증
 ├── plan/                   # Phase별 학습 기획 문서
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
@@ -252,7 +274,8 @@ web-fe-roadmap-study/
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
 | Phase 6 — 도구의 내부 동작 | 5 | ⬜ 예정 |
-| Phase 7 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
-| Phase 8 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
+| Phase 7 — Git 변경 이력과 협업 모델 | 8 | ⬜ 예정 |
+| Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ⬜ 예정 |
+| Phase 9 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
 **다음 단계**: Phase 6(도구의 내부 동작) 학습 기획(`plan/phase6.md`)이 완료되었습니다. 이 기획의 집필 순서(6-1 → 6-5)에 따라 Phase 6 문서를 순서대로 작성합니다.
