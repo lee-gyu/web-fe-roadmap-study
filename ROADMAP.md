@@ -1,7 +1,7 @@
 # 웹 프론트엔드 심화 학습 로드맵
 
 > 5년차 이상 경력 개발자(백엔드·모바일 등)를 **내부 동작 원리와 트레이드오프를 근거로 설계 판단을 내릴 수 있는 웹 프론트엔드 엔지니어**로 성장시키기 위한 심화(deep dive) 커리큘럼입니다.
-> 모든 교육 문서는 한국어로 작성하며, 이 저장소의 `docs/` 디렉터리에 Phase별로 배치합니다.
+> 모든 교육 문서는 한국어로 작성하며, 이 저장소의 `docs/` 디렉터리에 Phase별·부록별로 배치합니다.
 
 ---
 
@@ -11,9 +11,9 @@
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 총 약 31주 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 기간 | 본 과정 총 약 31주 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
-| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상 |
+| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 과정은 별도 과제 없이 상황별 사고법과 경험 법칙 레퍼런스로 활용 |
 
 ### 학습 원칙
 
@@ -21,7 +21,7 @@
 2. **트레이드오프 중심** — 모든 기술 선택에는 비용이 있다. "무엇을 쓸까"가 아니라 "이 상황에서 각 선택이 무엇을 얻고 무엇을 포기하는가"를 판단 기준으로 삼는다.
 3. **경계 조건 탐색** — 추상화가 무너지는 지점(성능 급락, 스펙의 한계, 프레임워크의 탈출구)을 의도적으로 찾아가며 학습한다.
 4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC), Git 공식 문서, 각 도구의 공식 문서를 1차 자료로 삼고, 통념과 1차 자료가 다르면 1차 자료로 검증한다.
-5. **만들며 검증하기** — 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다.
+5. **만들며 검증하기** — 본 과정의 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다. 부록 과정은 과제 대신 실제 상황을 해석하는 사고 도구로 다룬다.
 
 ---
 
@@ -40,6 +40,7 @@ flowchart LR
     P8 --> P9["Phase 9<br/>설계 패턴<br/>JavaScript·React"]
     P9 --> P10["Phase 10<br/>실전 프로젝트와<br/>기술 검증"]
     P10 --> P11["Phase 11<br/>AI 에이전트 활용<br/>워크플로와 하네스"]
+    P11 -.-> A1["부록 A<br/>사고법과<br/>경험 법칙"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
@@ -56,10 +57,11 @@ flowchart LR
 | 9 | 설계 패턴 — JavaScript와 React 컴포넌트 패턴 | 2주 | 패턴 리팩터링 리포트, React 컴포넌트 패턴 샘플 |
 | 10 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
 | 11 | AI 에이전트 활용 — 프론트엔드 개발 워크플로와 하네스 설계 | 2주+ | agent-ready 저장소 지시문, 에이전트 워크플로 플레이북, 검증 리포트 |
+| 부록 A | 사고법과 경험 법칙 — hacker-laws 재분류 | 선택/상시 | 과제 없음. 상황별 판단 질문과 법칙 레퍼런스 |
 
 ---
 
-## 3. Phase별 상세 커리큘럼
+## 3. Phase별·부록별 상세 커리큘럼
 
 ### Phase 0 — 웹 플랫폼의 이해 (1주)
 
@@ -268,11 +270,33 @@ flowchart LR
 
 ---
 
+### 부록 A — 사고법과 경험 법칙: hacker-laws 재분류 (선택/상시)
+
+**학습 목표**: [`hacker-laws/README.md`](hacker-laws/README.md)의 법칙과 원칙을 암기 목록이 아니라 상황을 해석하는 렌즈로 재분류한다. 각 법칙은 절대 명제가 아니라 특정 맥락에서 유용한 휴리스틱(heuristic)이며, 서로 충돌할 수 있고 조직·제품·시스템의 규모에 따라 가중치가 달라진다는 전제를 둔다.
+
+**운영 원칙**: 이 부록은 실습 과제를 요구하지 않는다. 대신 설계 리뷰, 일정 추정, 장애 회고, 조직 구조 논의, 제품 의사결정, AI 도구 도입처럼 판단이 필요한 상황에서 어떤 질문을 던질지 정리한다. 법칙을 근거로 결론을 닫기보다, 법칙이 드러내는 비용·예외·경계 조건을 확인하는 방식으로 다룬다. 아래 분류는 대표 배치이며, 한 법칙이 여러 맥락에 걸칠 수 있음을 전제한다.
+
+| 파트 | 문서 | 주요 내용 |
+|------|------|----------|
+| A-1 | `docs/appendix-a/01-laws-as-heuristics.md` | **법칙을 휴리스틱으로 읽기**: All Models Are Wrong, Occam's Razor, The Law of the Instrument, Chesterton's Fence, Hanlon's Razor, Murphy's Law / Sod's Law, The Dunning-Kruger Effect, Clarke's three laws. 단순화·도구 집착·레거시 제거·실패 가능성·전문성 착각을 절대 규칙이 아닌 판단 보조 장치로 다룬다. |
+| A-2 | `docs/appendix-a/02-estimation-scope-and-finish-line.md` | **일정·범위·완료 리스크**: 90-90 Rule, Hofstadter's Law, Parkinson's Law, Brooks' Law, The Pareto Principle, The Law of Triviality, Wadler's Law, Hutber's Law. 완료 직전의 숨은 작업, 인력 추가의 비용, 사소한 논쟁, 일정이 늘어나는 구조를 일정 추정과 범위 관리의 관점에서 설명한다. |
+| A-3 | `docs/appendix-a/03-complexity-abstraction-and-entropy.md` | **복잡도·추상화·소프트웨어 엔트로피**: Gall's Law, The Law of Conservation of Complexity, The Law of Leaky Abstractions, Hyrum's Law, The Second-System Effect, The Broken Windows Theory, The Scout Rule, Kernighan's Law. 큰 시스템을 한 번에 설계하려는 충동, 누수되는 추상화, 암묵적 인터페이스, 방치된 품질 저하의 경계 조건을 다룬다. |
+| A-4 | `docs/appendix-a/04-code-principles-and-module-boundaries.md` | **코드 원칙·모듈 경계**: SOLID, The Single Responsibility Principle, The Open/Closed Principle, The Liskov Substitution Principle, The Interface Segregation Principle, The Dependency Inversion Principle, The DRY Principle, The KISS principle, YAGNI, The Law of Demeter, The Unix Philosophy, Input-Process-Output, The Robustness Principle, The Principle of Least Astonishment, Premature Optimization Effect. 원칙을 체크리스트가 아니라 변경 비용과 의존성 방향을 읽는 언어로 사용한다. |
+| A-5 | `docs/appendix-a/05-organization-teams-and-collaboration.md` | **조직·팀·협업 구조**: Conway's Law, Dunbar's Number, The Ringelmann Effect, The Two Pizza Rule, The Spotify Model, Putt's Law, The Peter Principle, The Dilbert Principle, The Dead Sea Effect, Wheaton's Law, Cunningham's Law, Linus's Law. 시스템 경계와 조직 경계의 상호작용, 팀 크기, 리뷰와 커뮤니티 피드백, 인재 유지와 의사결정 구조를 다룬다. |
+| A-6 | `docs/appendix-a/06-product-community-and-metrics.md` | **제품·커뮤니티·지표 판단**: Fitts' Law, Hick's Law, 90-9-1 Principle, Metcalfe's Law, Reed's Law, Goodhart's Law, Twyman's Law, The Shirky Principle. 사용자 행동, 선택지 수, 네트워크 효과, 참여 불균형, 지표가 목표가 될 때 생기는 왜곡을 제품 판단의 언어로 정리한다. |
+| A-7 | `docs/appendix-a/07-distributed-performance-and-security-constraints.md` | **분산·성능·보안의 물리적 제약**: CAP Theorem, The Fallacies of Distributed Computing, Amdahl's Law, Moore's Law, Koomey's Law, Jevons' Paradox, Kerckhoffs's principle. 네트워크·병렬화·에너지 효율·보안 설계에서 피할 수 없는 제약과, 프론트엔드가 백엔드·플랫폼 선택을 읽을 때 필요한 질문을 다룬다. |
+| A-8 | `docs/appendix-a/08-technology-adoption-ai-and-forecasting.md` | **기술 도입·AI·미래 예측**: The Hype Cycle & Amara's Law, The Bitter Lesson, The Stochastic Parrot. 신기술 기대와 실효의 시간차, 계산 자원과 범용 방법의 장기 효과, 언어 모델을 다룰 때 필요한 한계 인식을 다룬다. |
+
+**과제**: 없음. 필요하다면 각 파트 끝에 "이 법칙이 지금 상황에서 틀릴 수 있는 조건은 무엇인가"를 묻는 회고 질문만 둔다.
+
+---
+
 ## 4. 저장소 구조
 
 ```
 web-fe-roadmap-study/
 ├── ROADMAP.md              # 이 문서 (전체 커리큘럼)
+├── hacker-laws/            # 부록 A 분류의 원문 참고 자료
 ├── docs/
 │   ├── phase-0/            # 웹 플랫폼의 이해
 │   ├── phase-1/            # HTML & CSS — 파싱과 렌더링 모델
@@ -285,7 +309,8 @@ web-fe-roadmap-study/
 │   ├── phase-8/            # 브라우저·네트워크·보안 심화
 │   ├── phase-9/            # 설계 패턴 — JavaScript와 React 컴포넌트 패턴
 │   ├── phase-10/           # 실전 프로젝트와 기술 검증
-│   └── phase-11/           # AI 에이전트 활용 — 워크플로와 하네스 설계
+│   ├── phase-11/           # AI 에이전트 활용 — 워크플로와 하네스 설계
+│   └── appendix-a/         # 사고법과 경험 법칙 — hacker-laws 재분류
 ├── plan/                   # Phase별 학습 기획 문서
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
@@ -320,5 +345,6 @@ web-fe-roadmap-study/
 | Phase 9 — 설계 패턴 | 6 | ✅ 완료 |
 | Phase 10 — 실전 프로젝트와 기술 검증 | 4 | ✅ 완료 |
 | Phase 11 — AI 에이전트 활용 | 7 | ✅ 완료 |
+| 부록 A — 사고법과 경험 법칙 | 8 | ⬜ 예정 |
 
-**다음 단계**: Phase 11 실습 과제를 수행하며 agent-ready 저장소 지시문, 에이전트 실행 리포트, 팀 운영 플레이북을 검증합니다.
+**다음 단계**: 부록 A 문서를 작성할 때는 각 법칙을 절대 규칙처럼 적용하지 않고, 특정 상황에서 어떤 질문을 열어 주는지와 언제 반례가 되는지를 함께 설명합니다.
