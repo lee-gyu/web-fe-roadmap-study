@@ -309,12 +309,12 @@ CLAUDE.md의 전 지침에 더해, Phase 11에서 특히 지킬 것:
 ## 7. 진행 체크리스트
 
 - [x] `plan/phase11.md` 과정 설계 초안
-- [ ] ROADMAP.md Phase 11 반영
-- [ ] 11-1 `01-agent-mental-model.md`
-- [ ] 11-2 `02-agentic-frontend-workflow.md`
-- [ ] 11-3 `03-context-and-instructions.md`
-- [ ] 11-4 `04-harness-engineering.md`
-- [ ] 11-5 `05-verification-and-observability.md`
-- [ ] 11-6 `06-safety-permissions-and-governance.md`
-- [ ] 11-7 `07-human-role-and-future-of-development.md`
-- [ ] `exercises/phase-11/` 과제 안내 문서
+- [x] ROADMAP.md Phase 11 반영
+- [x] 11-1 `01-agent-mental-model.md`
+- [x] 11-2 `02-agentic-frontend-workflow.md`
+- [x] 11-3 `03-context-and-instructions.md`
+- [x] 11-4 `04-harness-engineering.md`
+- [x] 11-5 `05-verification-and-observability.md`
+- [x] 11-6 `06-safety-permissions-and-governance.md`
+- [x] 11-7 `07-human-role-and-future-of-development.md`
+- [x] `exercises/phase-11/` 과제 안내 문서
