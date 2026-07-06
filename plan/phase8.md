@@ -209,5 +209,5 @@ CLAUDE.md의 전 지침에 더해, Phase 8에서 특히 지킬 것:
 - [x] 8-4 `04-web-security.md`
 - [x] 8-5 `05-rendering-strategies.md`
 - [x] 8-6 `06-nextjs-and-rsc.md`
-- [ ] `exercises/phase-8/` 과제 안내 문서
+- [x] `exercises/phase-8/` 과제 안내 문서
 - [x] ROADMAP.md 5절 진행 현황 표 갱신

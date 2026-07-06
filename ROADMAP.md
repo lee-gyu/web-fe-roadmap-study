@@ -210,7 +210,7 @@ flowchart LR
 | 8-5 | `docs/phase-8/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
 | 8-6 | `docs/phase-8/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
 
-**실습 과제**: Phase 6 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작.
+**실습 과제**: Phase 6 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작. 상세 기준은 [exercises/phase-8](exercises/phase-8/README.md) 참고.
 
 ---
 
@@ -278,4 +278,4 @@ web-fe-roadmap-study/
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ✅ 완료 |
 | Phase 9 — 실전 프로젝트와 기술 검증 | 4 | ⬜ 예정 |
 
-**다음 단계**: Phase 8(브라우저·네트워크·보안 심화) 문서 6개 작성이 완료되었습니다. 다음 순서는 Phase 8 실습 과제 안내와 Phase 9(실전 프로젝트와 기술 검증) 기획·집필입니다.
+**다음 단계**: Phase 8(브라우저·네트워크·보안 심화) 문서와 실습 과제 안내가 완료되었습니다. 다음 순서는 Phase 9(실전 프로젝트와 기술 검증) 기획·집필입니다.
