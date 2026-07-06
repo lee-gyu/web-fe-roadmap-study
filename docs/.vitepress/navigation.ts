@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import type { DefaultTheme } from 'vitepress';
 
 export interface PhaseDoc {
-  phase: number;
+  phase: number | null;
   order: number;
   title: string;
   shortTitle: string;
@@ -12,13 +12,16 @@ export interface PhaseDoc {
 }
 
 export interface PhaseGroup {
-  phase: number;
+  phase: number | null;
+  sortOrder: number;
   text: string;
+  activeMatch: string;
   docs: PhaseDoc[];
 }
 
 const docsRoot = fileURLToPath(new URL('..', import.meta.url));
 const phaseDirectoryPattern = /^phase-(\d+)$/;
+const appendixDirectoryPattern = /^appendix-a$/;
 const documentFilePattern = /^(\d+)-.+\.md$/;
 const headingPattern = /^#\s+(.+?)\s*$/m;
 
@@ -39,6 +42,32 @@ const PHASE_LABELS: Record<number, string> = {
 
 function phaseLabel(phase: number): string {
   return PHASE_LABELS[phase] ?? `Phase ${phase}`;
+}
+
+function directoryConfig(name: string): Omit<PhaseGroup, 'docs'> | null {
+  const phaseMatch = name.match(phaseDirectoryPattern);
+
+  if (phaseMatch) {
+    const phase = Number(phaseMatch[1]);
+
+    return {
+      phase,
+      sortOrder: phase,
+      text: phaseLabel(phase),
+      activeMatch: `/${name}/`,
+    };
+  }
+
+  if (appendixDirectoryPattern.test(name)) {
+    return {
+      phase: null,
+      sortOrder: 1000,
+      text: '부록 A. 사고법과 경험 법칙',
+      activeMatch: `/${name}/`,
+    };
+  }
+
+  return null;
 }
 
 function trimTitle(title: string): string {
@@ -64,12 +93,12 @@ export function getPhaseGroups(): PhaseGroup[] {
   return readdirSync(docsRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => {
-      const match = entry.name.match(phaseDirectoryPattern);
-      return match ? { name: entry.name, phase: Number(match[1]) } : null;
+      const config = directoryConfig(entry.name);
+      return config ? { name: entry.name, config } : null;
     })
-    .filter((entry): entry is { name: string; phase: number } => entry !== null)
-    .sort((a, b) => a.phase - b.phase)
-    .map(({ name, phase }) => {
+    .filter((entry): entry is { name: string; config: Omit<PhaseGroup, 'docs'> } => entry !== null)
+    .sort((a, b) => a.config.sortOrder - b.config.sortOrder)
+    .map(({ name, config }) => {
       const phasePath = join(docsRoot, name);
       const docs = readdirSync(phasePath, { withFileTypes: true })
         .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
@@ -87,7 +116,7 @@ export function getPhaseGroups(): PhaseGroup[] {
           const slug = basename(entry.name, '.md');
 
           return {
-            phase,
+            phase: config.phase,
             order,
             title,
             shortTitle: trimTitle(title),
@@ -97,8 +126,7 @@ export function getPhaseGroups(): PhaseGroup[] {
         .sort((a, b) => a.order - b.order);
 
       return {
-        phase,
-        text: phaseLabel(phase),
+        ...config,
         docs,
       };
     })
@@ -109,7 +137,7 @@ export function buildNav(): DefaultTheme.NavItem[] {
   const documentItems: DefaultTheme.NavItemWithLink[] = getPhaseGroups().map((group) => ({
     text: group.text,
     link: group.docs[0].link,
-    activeMatch: `/phase-${group.phase}/`,
+    activeMatch: group.activeMatch,
   }));
 
   return [

@@ -358,15 +358,17 @@ flowchart TD
 
 ## 7. 진행 체크리스트
 
-- [ ] `docs/appendix-a/01-laws-as-heuristics.md` 작성
-- [ ] `docs/appendix-a/02-estimation-scope-and-finish-line.md` 작성
-- [ ] `docs/appendix-a/03-complexity-abstraction-and-entropy.md` 작성
-- [ ] `docs/appendix-a/04-code-principles-and-module-boundaries.md` 작성
-- [ ] `docs/appendix-a/05-organization-teams-and-collaboration.md` 작성
-- [ ] `docs/appendix-a/06-product-community-and-metrics.md` 작성
-- [ ] `docs/appendix-a/07-distributed-performance-and-security-constraints.md` 작성
-- [ ] `docs/appendix-a/08-technology-adoption-ai-and-forecasting.md` 작성
-- [ ] 각 문서가 "법칙은 절대적이지 않다"는 전제를 명시하는지 확인
-- [ ] 각 문서가 적어도 하나 이상의 반례·경계 조건을 포함하는지 확인
-- [ ] 각 문서가 관련 Phase 문서로 교차 링크되는지 확인
-- [ ] ROADMAP.md 진행 현황 표를 부록 문서 작성 상태에 맞게 갱신
+이 체크리스트는 본 기획 문서 이후 실제 `docs/appendix-a/` 문서를 작성할 때 사용하는 추적 목록이다. 기획 문서의 완료 여부가 아니라 부록 A 본문 집필 단계의 완료 조건을 나타낸다.
+
+- [x] `docs/appendix-a/01-laws-as-heuristics.md` 작성
+- [x] `docs/appendix-a/02-estimation-scope-and-finish-line.md` 작성
+- [x] `docs/appendix-a/03-complexity-abstraction-and-entropy.md` 작성
+- [x] `docs/appendix-a/04-code-principles-and-module-boundaries.md` 작성
+- [x] `docs/appendix-a/05-organization-teams-and-collaboration.md` 작성
+- [x] `docs/appendix-a/06-product-community-and-metrics.md` 작성
+- [x] `docs/appendix-a/07-distributed-performance-and-security-constraints.md` 작성
+- [x] `docs/appendix-a/08-technology-adoption-ai-and-forecasting.md` 작성
+- [x] 각 문서가 "법칙은 절대적이지 않다"는 전제를 명시하는지 확인
+- [x] 각 문서가 적어도 하나 이상의 반례·경계 조건을 포함하는지 확인
+- [x] 각 문서가 관련 Phase 문서로 교차 링크되는지 확인
+- [x] ROADMAP.md 진행 현황 표를 부록 문서 작성 상태에 맞게 갱신
