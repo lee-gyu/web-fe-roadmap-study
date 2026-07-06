@@ -7,6 +7,9 @@ export default defineConfig({
   title: 'Web F/E Learning',
   description: '웹 개발자를 위한 기술 교육 문서',
   cleanUrls: true,
+  sitemap: {
+    hostname: 'https://lee-gyu.github.io/web-fe-roadmap-study/',
+  },
   srcExclude: ['README.md'],
   themeConfig: {
     nav: buildNav(),
