@@ -7,6 +7,17 @@ export default defineConfig({
   title: 'Web F/E Learning',
   description: '웹 개발자를 위한 기술 교육 문서',
   cleanUrls: true,
+  head: [
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        as: 'style',
+        crossorigin: '',
+        href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css',
+      },
+    ],
+  ],
   sitemap: {
     hostname: 'https://lee-gyu.github.io/web-fe-roadmap-study/',
   },
