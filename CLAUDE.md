@@ -12,6 +12,7 @@
 
 - `ROADMAP.md` — 전체 커리큘럼, Phase별 문서 목록, 진행 현황의 기준 문서
 - `docs/phase-N/NN-slug.md` — 실제 교육 문서 원본
+- `docs/.vitepress/` — VitePress 기반 웹 매뉴얼 설정/소스
 - `exercises/` — Phase별 실습 과제와 검증 기준
 - `plan/` — Phase별 작성 계획과 작업 노트
 - `CLAUDE.md` — 문서 작성자와 자동화 에이전트가 따라야 할 집필·운영 지침
