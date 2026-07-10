@@ -11,7 +11,7 @@
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 본 과정 약 35주 이상 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 기간 | 본 과정 약 37주 이상 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
 | 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 A는 상황별 사고법 레퍼런스, 부록 B는 아키텍처 비교표·선택 ADR·진화 경로 리포트로 활용 |
 
@@ -35,7 +35,8 @@ flowchart LR
     P3 --> P4["Phase 4<br/>TypeScript<br/>타입 시스템"]
     P4 --> P5["Phase 5<br/>React<br/>렌더링 모델"]
     P5 --> P5A["Phase 5a<br/>React<br/>Patterns"]
-    P5A --> P6["Phase 6<br/>도구의<br/>내부 동작"]
+    P5A --> P5B["Phase 5b<br/>React Rendering<br/>Patterns"]
+    P5B --> P6["Phase 6<br/>도구의<br/>내부 동작"]
     P6 --> P7["Phase 7<br/>Git<br/>변경 이력과 협업"]
     P7 --> P8["Phase 8<br/>브라우저·네트워크·보안<br/>심화"]
     P8 --> P9["Phase 9<br/>설계 패턴<br/>JavaScript·React"]
@@ -54,6 +55,7 @@ flowchart LR
 | 4 | TypeScript — 타입 시스템 | 2주 | JS 프로젝트의 TS 마이그레이션 + 타입 설계 문서 |
 | 5 | React — 렌더링 모델과 상태 아키텍처 | 5주 | React SPA (리렌더 분석 리포트 포함) |
 | 5a | React Patterns — 컴포넌트 합성과 로직 재사용 | 2주 | 패턴 비교 리포트, headless/compound 컴포넌트와 스트리밍 AI UI 샘플 |
+| 5b | React Rendering Patterns — 전달·하이드레이션·서버 경계 | 2주 | 렌더링 전략 비교·계측 리포트, 스트리밍 SSR/RSC 샘플과 선택 ADR |
 | 6 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
 | 7 | Git — 변경 이력과 협업 모델 | 3주 | Git 운영 플레이북, 충돌 해결·이력 복구 리포트 |
 | 8 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
@@ -192,6 +194,27 @@ flowchart LR
 
 ---
 
+### Phase 5b — React Rendering Patterns: 전달·하이드레이션·서버 경계 (2주)
+
+**학습 목표**: Phase 5의 React 렌더링 모델과 Phase 5a의 컴포넌트 합성을 바탕으로, 렌더링 위치와 시점·데이터 신선도·캐시 가능성·클라이언트 JavaScript·하이드레이션·서버 비용을 공통 축으로 비교한다. 페이지와 컴포넌트의 요구사항에 따라 CSR·SSR·SSG·ISR을 선택하고, 스트리밍·점진적/선택적 하이드레이션·RSC를 조합한 뒤 성능과 운영상 트레이드오프를 근거로 설명할 수 있다.
+
+**운영 원칙**: 렌더링 패턴을 서로 배타적인 발전 단계나 프레임워크 옵션 목록으로 암기하지 않는다. 한 애플리케이션과 한 페이지 안에서도 정적 셸, 요청별 HTML, 클라이언트 위젯, 스트리밍 경계가 함께 존재할 수 있음을 전제로 **어디서·언제 렌더하는가**, **어떤 HTML과 JavaScript가 전달되는가**, **언제 상호작용 가능한가**, **캐시가 언제 무효화되는가**를 요청 타임라인으로 추적한다. Patterns.dev를 학습 출발점으로 사용하되 React 및 프레임워크의 버전별 API·캐시 기본값은 공식 문서로 재검증한다. Phase 8에서는 이 선택을 브라우저·네트워크·Core Web Vitals 관점에서 계측하고 Next.js 애플리케이션에 통합한다.
+
+| # | 문서 | 주요 내용 |
+|---|------|----------|
+| 5b-1 | `docs/phase-5b/01-client-side-rendering.md` | [Client-side Rendering](https://www.patterns.dev/react/client-side-rendering/): 빈 HTML 셸에서 번들 다운로드·파싱·실행, `createRoot`, 마운트 후 데이터 요청으로 이어지는 타임라인, 빠른 전환과 풍부한 상호작용의 이점, 초기 표시·SEO·저사양 기기 CPU·요청 waterfall 비용, 인증 앱·내부 도구·장시간 세션에 적합한 조건과 코드 분할·프리로드·앱 셸의 한계 |
+| 5b-2 | `docs/phase-5b/02-server-side-rendering.md` | [Server-side Rendering](https://www.patterns.dev/react/server-side-rendering/): 요청마다 React 트리를 HTML로 만들고 `hydrateRoot`로 연결하는 파이프라인, 요청 시점 개인화와 초기 콘텐츠·SEO 이점, TTFB·서버 자원·하이드레이션 및 mismatch 비용, Node/Web 스트림 API와 오류·중단 처리, CSR·정적 렌더링·RSC와의 역할 구분 |
+| 5b-3 | `docs/phase-5b/03-static-rendering.md` | [Static Rendering](https://www.patterns.dev/react/static-rendering/): 빌드 시점 prerender와 CDN 배포, 동적 경로 생성과 정적 렌더링을 해제하는 요청 시점 입력, 낮은 TTFB·운영 비용·원본 장애 복원력, 동일 HTML·빌드 시간·콘텐츠 신선도 제약, 정적 본문과 클라이언트 동적 영역을 조합하는 기준 |
+| 5b-4 | `docs/phase-5b/04-incremental-static-generation.md` | [Incremental Static Generation](https://www.patterns.dev/react/incremental-static-rendering/): 빌드 이후의 on-demand route 생성과 기존 결과 재검증, stale-while-revalidate 동작 모델, 시간 기반과 path/tag 기반 무효화, 첫 요청·stale window·전역 CDN 전파·실패 시 오래된 콘텐츠의 경계 조건, 데이터 소유권에 맞는 캐시 키와 무효화 설계 |
+| 5b-5 | `docs/phase-5b/05-progressive-hydration.md` | [Progressive Hydration](https://www.patterns.dev/react/progressive-hydration/): 전체 트리 일괄 하이드레이션이 메인 스레드와 INP에 주는 비용, 컴포넌트별 코드 분할과 `Suspense` 경계, 가시성·idle·사용자 의도 기반 지연, 이미 표시된 HTML과 상호작용 가능 시점의 간극, progressive enhancement와 접근성·첫 상호작용 지연의 트레이드오프 |
+| 5b-6 | `docs/phase-5b/06-streaming-server-side-rendering.md` | [Streaming Server-Side Rendering](https://www.patterns.dev/react/streaming-ssr/): 느린 데이터가 전체 HTML을 막는 buffered SSR의 한계, `renderToPipeableStream`/`renderToReadableStream`과 셸·청크 전송, `Suspense` reveal 순서와 `onShellReady`/`onAllReady`, 스트림 중단·타임아웃·오류 경계·HTTP 상태 및 프록시 버퍼링 제약 |
+| 5b-7 | `docs/phase-5b/07-react-server-components.md` | [React Server Components](https://www.patterns.dev/react/react-server-components/): RSC와 SSR의 서로 다른 책임, build/request 시점 실행과 RSC payload, `'use client'` 경계와 Server Function의 `'use server'`, 직렬화 가능한 props와 composition 규칙, 서버 직접 데이터 접근·waterfall·보안 경계, 클라이언트 번들·하이드레이션 감소와 서버/캐시 비용 |
+| 5b-8 | `docs/phase-5b/08-selective-hydration.md` | [Selective Hydration](https://www.patterns.dev/react/react-selective-hydration/): 스트리밍 SSR과 `Suspense`가 만드는 독립 하이드레이션 단위, 코드·데이터 도착 순서와 사용자 입력에 따른 우선순위 조정, 이벤트 재생과 이미 표시됐지만 아직 비활성인 UI, progressive hydration과의 포함 관계, 경계 크기·fallback·상호작용 우선순위를 계측해 조정하는 기준 |
+
+**실습 과제**: 동일한 상품 상세 또는 콘텐츠 페이지를 CSR·SSR·SSG·ISR로 각각 구성하고, 제어 가능한 데이터 지연과 캐시 갱신 시나리오에서 HTML 응답, 요청 waterfall, TTFB·FCP·LCP·INP, 전달 JavaScript, 상호작용 가능 시점을 비교한다. 이어 느린 영역을 `Suspense`로 분리한 스트리밍 SSR과 Server/Client Component 경계를 적용해 전후를 계측하고, 페이지 영역별로 선택한 패턴·대안·무효화 조건·철회 조건을 렌더링 전략 ADR에 기록한다. 상세 실습 문서는 `exercises/phase-5b/README.md`에서 작성한다.
+
+---
+
 ### Phase 6 — 도구의 내부 동작 (2주)
 
 **학습 목표**: 패키지 매니저·번들러·린터·테스트 러너를 블랙박스가 아니라 동작 원리 수준에서 이해하고, 문제가 생겼을 때 어느 계층을 의심할지 판단할 수 있다.
@@ -237,8 +260,8 @@ flowchart LR
 | 8-2 | `docs/phase-8/02-network-deep-dive.md` | 브라우저와 네트워크의 통합: CORS의 동작 원리(preflight가 존재하는 이유, 단순 요청의 조건), 리소스 로딩 우선순위와 리소스 힌트(preload/preconnect/fetchpriority), CDN·프록시 계층에서의 캐시 운용 (HTTP 프로토콜 자체는 Phase 2 전제) |
 | 8-3 | `docs/phase-8/03-web-performance.md` | Core Web Vitals(LCP/CLS/INP)의 계측 원리, 로딩 워터폴 분석과 크리티컬 패스, 코드 스플리팅·리소스 힌트·이미지 최적화의 우선순위 판단 |
 | 8-4 | `docs/phase-8/04-web-security.md` | XSS 공격 벡터와 방어 계층(이스케이프, CSP, Trusted Types), CSRF와 SameSite 쿠키(쿠키 모델은 2-3 전제), 토큰 저장 위치의 트레이드오프(JWT vs 세션, localStorage vs httpOnly 쿠키) |
-| 8-5 | `docs/phase-8/05-rendering-strategies.md` | CSR/SSR/SSG/ISR의 비용 구조 비교(TTFB vs 인터랙티브 시점), 하이드레이션의 실체와 비용, 스트리밍 SSR과 선택적 하이드레이션 |
-| 8-6 | `docs/phase-8/06-nextjs-and-rsc.md` | Next.js App Router, React Server Components의 실행 모델(서버-클라이언트 직렬화 경계), 서버/클라이언트 컴포넌트 분리 기준과 캐싱 계층 |
+| 8-5 | `docs/phase-8/05-rendering-strategies.md` | Phase 5b의 CSR/SSR/SSG/ISR 선택을 브라우저·네트워크 계측으로 검증: TTFB·FCP·LCP·INP와 요청 waterfall, JavaScript 실행·하이드레이션·스트리밍이 메인 스레드와 인터랙티브 시점에 주는 영향 |
+| 8-6 | `docs/phase-8/06-nextjs-and-rsc.md` | Phase 5b의 렌더링·RSC 모델을 Next.js App Router에 통합: route별 정적/동적 경계, Server/Client Component 분리, 캐싱·재검증 계층과 배포 환경에서의 관측·디버깅 |
 
 **실습 과제**: Phase 6 프로젝트의 Core Web Vitals를 계측·개선하고 원인-조치-효과를 담은 성능 리포트 작성 → Next.js(App Router)로 SSR/RSC 적용 미니 프로젝트 제작. 상세 기준은 [exercises/phase-8](exercises/phase-8/README.md) 참고.
 
@@ -351,6 +374,7 @@ web-fe-roadmap-study/
 │   ├── phase-4/            # TypeScript — 타입 시스템
 │   ├── phase-5/            # React — 렌더링 모델과 상태 아키텍처
 │   ├── phase-5a/           # React Patterns — 컴포넌트 합성과 로직 재사용
+│   ├── phase-5b/           # React Rendering Patterns — 전달·하이드레이션·서버 경계
 │   ├── phase-6/            # 도구의 내부 동작
 │   ├── phase-7/            # Git — 변경 이력과 협업 모델
 │   ├── phase-8/            # 브라우저·네트워크·보안 심화
@@ -383,6 +407,7 @@ web-fe-roadmap-study/
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
 | Phase 5a — React Patterns | 7 | ✅ 완료 |
+| Phase 5b — React Rendering Patterns | 8 | ⬜ 예정 |
 | Phase 6 — 도구의 내부 동작 | 5 | ✅ 완료 |
 | Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ✅ 완료 |
@@ -392,4 +417,4 @@ web-fe-roadmap-study/
 | 부록 A — 사고법과 경험 법칙 | 8 | ✅ 완료 |
 | 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ✅ 완료 |
 
-**다음 단계**: 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.
+**다음 단계**: Phase 5b의 상세 기획과 실습 기준을 확정한 뒤 8개 문서를 집필하고 VitePress 내비게이션에 연결합니다. 이후 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.

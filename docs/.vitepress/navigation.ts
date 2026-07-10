@@ -34,6 +34,7 @@ const PHASE_LABELS: Record<string, string> = {
   4: 'Phase 4. TypeScript 타입 시스템',
   5: 'Phase 5. React 렌더링 모델',
   '5a': 'Phase 5a. React Patterns',
+  '5b': 'Phase 5b. React Rendering Patterns',
   6: 'Phase 6. 도구의 내부 동작',
   7: 'Phase 7. Git 변경 이력과 협업 모델',
   8: 'Phase 8. 브라우저·네트워크·보안 심화',
