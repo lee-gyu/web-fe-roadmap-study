@@ -46,6 +46,7 @@ const PHASE_LABELS: Record<string, string> = {
 const APPENDIX_LABELS: Record<string, string> = {
   a: '부록 A. 사고법과 경험 법칙',
   b: '부록 B. 소프트웨어 아키텍처 패턴',
+  c: '부록 C. SolidJS',
 };
 
 function phaseLabel(phaseId: string): string {

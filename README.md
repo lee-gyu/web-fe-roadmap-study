@@ -13,6 +13,8 @@
 - Phase 3 — JavaScript 언어와 런타임
 - Phase 4 — TypeScript 타입 시스템
 - Phase 5 — React 렌더링 모델
+- Phase 5a — React Patterns: 컴포넌트 합성과 로직 재사용
+- Phase 5b — React Rendering Patterns: 전달·하이드레이션·서버 경계
 - Phase 6 — 도구의 내부 동작
 - Phase 7 — Git 변경 이력과 협업 모델
 - Phase 8 — 브라우저·네트워크·보안 심화
@@ -21,3 +23,5 @@
 - Phase 11 — AI 에이전트 활용
 - 부록 A — 사고법과 경험 법칙
     - 출처: <https://github.com/dwmkerr/hacker-laws>
+- 부록 B — 소프트웨어 아키텍처 패턴: 경계·흐름·분산 시스템
+- 부록 C — SolidJS: 세밀한 반응성과 풀스택 실행 모델

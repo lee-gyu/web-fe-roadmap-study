@@ -13,7 +13,7 @@
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
 | 기간 | 본 과정 약 37주 이상 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
-| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 A는 상황별 사고법 레퍼런스, 부록 B는 아키텍처 비교표·선택 ADR·진화 경로 리포트로 활용 |
+| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 A는 상황별 사고법 레퍼런스, 부록 B는 아키텍처 비교표·선택 ADR·진화 경로 리포트, 부록 C는 반응성 실행 추적·CSR/SSR 비교 리포트와 SolidStart 통합 앱·설계 노트로 활용 |
 
 ### 학습 원칙
 
@@ -21,7 +21,7 @@
 2. **트레이드오프 중심** — 모든 기술 선택에는 비용이 있다. "무엇을 쓸까"가 아니라 "이 상황에서 각 선택이 무엇을 얻고 무엇을 포기하는가"를 판단 기준으로 삼는다.
 3. **경계 조건 탐색** — 추상화가 무너지는 지점(성능 급락, 스펙의 한계, 프레임워크의 탈출구)을 의도적으로 찾아가며 학습한다.
 4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC), Git 공식 문서, 각 도구의 공식 문서를 1차 자료로 삼고, 통념과 1차 자료가 다르면 1차 자료로 검증한다.
-5. **만들며 검증하기** — 본 과정의 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다. 부록 A는 과제 대신 실제 상황을 해석하는 사고 도구로, 부록 B는 기존 시스템을 품질 속성과 실패 시나리오로 분석하는 설계 도구로 다룬다.
+5. **만들며 검증하기** — 본 과정의 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다. 부록 A는 과제 대신 실제 상황을 해석하는 사고 도구로, 부록 B는 기존 시스템을 품질 속성과 실패 시나리오로 분석하는 설계 도구로, 부록 C는 반응형 그래프·DOM 갱신·비동기 경계·hydration을 직접 관찰하는 비교 과정으로 다룬다.
 
 ---
 
@@ -44,6 +44,7 @@ flowchart LR
     P10 --> P11["Phase 11<br/>AI 에이전트 활용<br/>워크플로와 하네스"]
     P11 -.-> A1["부록 A<br/>사고법과<br/>경험 법칙"]
     P9 -.-> B1["부록 B<br/>소프트웨어<br/>아키텍처 패턴"]
+    P5B -.-> C1["부록 C<br/>SolidJS<br/>반응성·풀스택"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
@@ -64,6 +65,7 @@ flowchart LR
 | 11 | AI 에이전트 활용 — 프론트엔드 개발 워크플로와 하네스 설계 | 2주+ | agent-ready 저장소 지시문, 에이전트 워크플로 플레이북, 검증 리포트 |
 | 부록 A | 사고법과 경험 법칙 — hacker-laws 재분류 | 선택/상시 | 과제 없음. 상황별 판단 질문과 법칙 레퍼런스 |
 | 부록 B | 소프트웨어 아키텍처 패턴 — 경계·흐름·분산 시스템 | 선택/상시 | 아키텍처 비교표, 선택 ADR, 점진적 진화 경로 리포트 |
+| 부록 C | SolidJS — 세밀한 반응성과 풀스택 실행 모델 | 선택/상시 | 반응성 실행 추적, CSR/SSR 비교 리포트, SolidStart 통합 앱과 서버 경계 설계 노트 |
 
 ---
 
@@ -359,6 +361,26 @@ flowchart LR
 
 ---
 
+### 부록 C — SolidJS: 세밀한 반응성과 풀스택 실행 모델 (선택/상시)
+
+**학습 목표**: Solid의 세밀한 반응성 그래프에서 무엇이 의존성을 수집하고 무엇이 다시 실행되며 어떤 표현식이 실제 DOM을 갱신하는지 설명할 수 있다. 이 모델을 근거로 signal·effect·memo, 컴포넌트·props·context, 제어 흐름·store, resource·Suspense·transition을 선택하고, SSR·Router·SolidStart의 서버-클라이언트 경계와 비용을 관찰해 설계할 수 있다.
+
+**운영 원칙**: React와의 문법 유사성보다 실행 모델의 차이를 먼저 다룬다. 각 파트는 API 사용 예제를 넘어 의존성 그래프, computation 실행 횟수, DOM 보존, network waterfall, hydration 시점을 관찰한다. [`plan/appendix-c/references.md`](plan/appendix-c/references.md)의 범위와 line map을 기준으로 원문을 확인하되, 요약에서 의도적으로 제거한 Chapter 2의 개발 환경 구성과 Appendix 1의 Webpack 설정은 포함하지 않는다. 원문은 Solid v1.8 기준이므로 `SuspenseList`, Solid Router, SolidStart의 버전 민감 API는 본문 집필 시 최신 공식 문서로 다시 검증한다.
+
+| 파트 | 문서 | 원본 Chapter / line | 주요 내용 |
+|------|------|---------------------|----------|
+| C-1 | `docs/appendix-c/01-solid-mental-model.md` | Chapter 1 `5-105`, Chapter 3 `314-817` | **입문과 기본 관점**: Solid의 성격과 선수 지식, React식 추론을 내려놓아야 하는 이유, 브라우저 렌더링 파이프라인과 상태-UI 동기화 문제, 세밀한 반응성·컴파일·단방향 데이터 흐름·합성 가능한 UI의 큰 그림 |
+| C-2 | `docs/appendix-c/02-fine-grained-reactivity.md` | Chapter 4-7 `818-1918` | **반응성 핵심 모델**: Observer 패턴으로 reactive core 구현, signal의 accessor·setter·비교·batch, effect의 자동/명시적 추적과 cleanup, memo의 캐시·비교·전파. 상태·부수 효과·파생 값의 책임 분리 |
+| C-3 | `docs/appendix-c/03-jsx-and-components.md` | Chapter 8-13 `1919-4966` | **JSX와 컴포넌트 기초**: JSX 컴파일 관점, 한 번 실행되는 컴포넌트와 반응형 표현식, props·children·Context의 데이터 흐름, lifecycle·cleanup, ref와 외부 DOM 라이브러리 경계 |
+| C-4 | `docs/appendix-c/04-reactive-runtime.md` | Chapter 14-18 `4967-6590` | **반응성 런타임 확장**: computation primitive의 실행 시점, ErrorBoundary와 `catchError`, owner 트리와 비동기 경계, 선언형/명령형 styling, 반응성·props·외부 연동 utility |
+| C-5 | `docs/appendix-c/05-control-flow-and-state.md` | Chapter 19-23 `6591-8300` | **제어 흐름과 상태 추상화**: `Show`·`Switch`·`Match`, `For`·`Index`와 항목 신원, `Portal`, proxy 기반 store와 utility, custom directive의 컴파일·반응성·cleanup |
+| C-6 | `docs/appendix-c/06-async-ui-and-interactions.md` | Chapter 24-32 `8301-11298` | **비동기 UI와 상호작용**: 수동 async 상태에서 resource로의 전환, Suspense·transition·SuspenseList, lazy와 코드 분할, 이벤트 부착 전략, `Dynamic`, JSX 없는 런타임 대안과 한계 |
+| C-7 | `docs/appendix-c/07-ssr-router-and-solidstart.md` | Chapter 33-35 `11299-19252` | **서버 렌더링과 풀스택**: 문자열·비동기·스트리밍 SSR과 hydration, Router의 경로·탐색·데이터·form mutation, SolidStart의 파일 규약·서버 기능·캐시·인증과 서버-클라이언트 경계 |
+
+**통합 적용 과제**: 동일한 데이터 중심 애플리케이션을 signal과 store로 구성하고 목록 갱신·비동기 요청·오류·로딩·전환을 구현한다. reactive core의 의존성 전파와 DOM 갱신 범위를 기록한 뒤 CSR과 streaming SSR의 HTML 응답, network waterfall, hydration 시점을 비교한다. 마지막으로 Solid Router와 SolidStart를 적용해 데이터 읽기·mutation·인증·cache invalidation의 서버 경계를 설명하는 설계 노트를 작성한다.
+
+---
+
 ## 4. 저장소 구조
 
 ```
@@ -382,9 +404,11 @@ web-fe-roadmap-study/
 │   ├── phase-10/           # 실전 프로젝트와 기술 검증
 │   ├── phase-11/           # AI 에이전트 활용 — 워크플로와 하네스 설계
 │   ├── appendix-a/         # 사고법과 경험 법칙 — hacker-laws 재분류
-│   └── appendix-b/         # 소프트웨어 아키텍처 패턴
+│   ├── appendix-b/         # 소프트웨어 아키텍처 패턴
+│   └── appendix-c/         # SolidJS — 세밀한 반응성과 풀스택 실행 모델
 ├── plan/                   # Phase별·부록별 학습 기획 문서
-│   └── appendix-b/         # 부록 B 조사 자료와 집필 계획
+│   ├── appendix-b/         # 부록 B 조사 자료와 집필 계획
+│   └── appendix-c/         # 부록 C 원본 요약과 집필 계획
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
 
@@ -416,5 +440,6 @@ web-fe-roadmap-study/
 | Phase 11 — AI 에이전트 활용 | 7 | ✅ 완료 |
 | 부록 A — 사고법과 경험 법칙 | 8 | ✅ 완료 |
 | 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ✅ 완료 |
+| 부록 C — SolidJS | 7 | ✅ 완료 |
 
-**다음 단계**: Phase 5b의 상세 기획과 실습 기준을 확정한 뒤 8개 문서를 집필하고 VitePress 내비게이션에 연결합니다. 이후 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.
+**다음 단계**: Phase 5b의 상세 기획과 실습 기준을 확정한 뒤 8개 문서를 집필하고 VitePress 내비게이션에 연결합니다. 이후 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·Solid·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다. 부록 C는 특히 `SuspenseList`, Solid Router, SolidStart의 버전 민감 API와 streaming·hydration 실습 결과를 최신 공식 문서 및 실제 배포 환경과 계속 대조합니다.
