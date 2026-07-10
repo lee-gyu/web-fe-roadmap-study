@@ -11,7 +11,7 @@
 |------|------|
 | 대상 | 5년차 이상 경력 개발자 (백엔드·모바일 등 타 분야 출신, 프론트엔드로 전환/확장하려는 사람) |
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
-| 기간 | 본 과정 총 약 31주 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
+| 기간 | 본 과정 약 35주 이상 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
 | 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 A는 상황별 사고법 레퍼런스, 부록 B는 아키텍처 비교표·선택 ADR·진화 경로 리포트로 활용 |
 
@@ -34,7 +34,8 @@ flowchart LR
     P2 --> P3["Phase 3<br/>JavaScript<br/>언어와 런타임"]
     P3 --> P4["Phase 4<br/>TypeScript<br/>타입 시스템"]
     P4 --> P5["Phase 5<br/>React<br/>렌더링 모델"]
-    P5 --> P6["Phase 6<br/>도구의<br/>내부 동작"]
+    P5 --> P5A["Phase 5a<br/>React<br/>Patterns"]
+    P5A --> P6["Phase 6<br/>도구의<br/>내부 동작"]
     P6 --> P7["Phase 7<br/>Git<br/>변경 이력과 협업"]
     P7 --> P8["Phase 8<br/>브라우저·네트워크·보안<br/>심화"]
     P8 --> P9["Phase 9<br/>설계 패턴<br/>JavaScript·React"]
@@ -52,6 +53,7 @@ flowchart LR
 | 3 | JavaScript — 언어와 런타임 | 5주 | 바닐라 JS 웹 앱 + 이벤트 루프/메모리 분석 |
 | 4 | TypeScript — 타입 시스템 | 2주 | JS 프로젝트의 TS 마이그레이션 + 타입 설계 문서 |
 | 5 | React — 렌더링 모델과 상태 아키텍처 | 5주 | React SPA (리렌더 분석 리포트 포함) |
+| 5a | React Patterns — 컴포넌트 합성과 로직 재사용 | 2주 | 패턴 비교 리포트, headless/compound 컴포넌트와 스트리밍 AI UI 샘플 |
 | 6 | 도구의 내부 동작 | 2주 | 테스트/린트/CI가 갖춰진 프로젝트 |
 | 7 | Git — 변경 이력과 협업 모델 | 3주 | Git 운영 플레이북, 충돌 해결·이력 복구 리포트 |
 | 8 | 브라우저·네트워크·보안 심화 | 3주 | 성능 개선 리포트, Next.js 앱 |
@@ -167,6 +169,26 @@ flowchart LR
 | 5-9 | `docs/phase-5/09-styling-strategies.md` | CSS Modules / Tailwind / CSS-in-JS의 빌드 타임·런타임 비용 비교, 각 접근이 무너지는 지점과 선택 기준 |
 
 **실습 과제**: React + TypeScript로 API 연동 SPA(상품 목록/상세/장바구니, 게시판 등) 제작. React DevTools Profiler로 불필요한 리렌더를 찾아 개선한 전/후 비교 리포트를 포함한다.
+
+---
+
+### Phase 5a — React Patterns: 컴포넌트 합성과 로직 재사용 (2주)
+
+**학습 목표**: Phase 5의 렌더링·상태 모델을 바탕으로 React에서 로직과 UI를 합성하는 주요 패턴의 데이터 흐름과 비용을 설명하고, 레거시 패턴을 읽거나 현대적 대안으로 전환하며, 제품 요구사항에 맞는 UI·애플리케이션 스택을 근거 있게 선택할 수 있다.
+
+**운영 원칙**: HOC·Container/Presentational·Render Props는 역사적 패턴으로만 치부하지 않고 장기 운영 코드와 라이브러리 API를 해석하는 도구로 학습한다. 동시에 같은 문제를 custom hook·Context·일반 합성으로 풀었을 때의 컴포넌트 트리, 타입 추론, 테스트 가능성, 리렌더 비용을 비교한다. 특정 AI SDK·프레임워크·라이브러리의 버전별 API는 고정 지식으로 암기하지 않고 공식 문서로 재검증하며, Phase 9에서는 이 구현 경험을 더 넓은 JavaScript 설계 패턴과 연결해 선택 기준을 심화한다.
+
+| # | 문서 | 주요 내용 |
+|---|------|----------|
+| 5a-1 | `docs/phase-5a/01-hoc-pattern.md` | [HOC Pattern](https://www.patterns.dev/react/hoc-pattern/): 컴포넌트를 받아 기능을 주입한 컴포넌트를 반환하는 구조, 횡단 관심사와 HOC 합성, TypeScript props 보존과 `displayName`, prop 충돌·ref/static 전달·wrapper hell의 실패 조건, custom hook·일반 합성을 우선할 기준 |
+| 5a-2 | `docs/phase-5a/02-hooks-pattern.md` | [Hook Pattern](https://www.patterns.dev/react/hooks-pattern/): 호출 순서에 기반한 Hooks 규칙, 상태·이펙트·Context·외부 스토어 로직의 custom hook 추출과 합성, stale closure·불필요한 Effect·SSR 경계, `use`·`useActionState`·`useFormStatus`·`useOptimistic`을 이용한 비동기 UI 패턴과 API 설계·테스트 기준 |
+| 5a-3 | `docs/phase-5a/03-compound-pattern.md` | [Compound Pattern](https://www.patterns.dev/react/compound-pattern/): 암묵적 공유 상태와 namespaced 하위 컴포넌트 API, Context 기반 headless 합성, controlled/uncontrolled 확장과 접근성 책임, `Children.map`/`cloneElement` 방식의 직접 자식 제약·prop 충돌, Context 값 안정성과 리렌더 범위 |
+| 5a-4 | `docs/phase-5a/04-container-presentational-pattern.md` | [Container/Presentational Pattern](https://www.patterns.dev/react/presentational-container-pattern/): 데이터·상태를 소유하는 container와 props로 UI를 표현하는 presentational component의 경계, 순수 UI의 재사용·테스트 이점, custom hook과 서버/클라이언트 경계로 책임을 분리하는 현대적 대안, 작은 기능에서 과도한 계층이 되는 조건 |
+| 5a-5 | `docs/phase-5a/05-render-props-pattern.md` | [Render Props Pattern](https://www.patterns.dev/react/render-props-pattern/): 함수값 prop과 children-as-function, TypeScript generic을 이용한 typed slot/headless API, 트리 소유권이 필요한 접근성·애니메이션·목록 구성 사례, callback pyramid·함수 identity 비용, 순수 로직 공유를 custom hook으로 전환할 기준 |
+| 5a-6 | `docs/phase-5a/06-ai-ui-patterns.md` | [AI UI Patterns](https://www.patterns.dev/react/ai-ui-patterns/): API key를 숨기는 서버 경계와 메시지 상태 모델, Web Streams 기반 부분 응답과 중단·재시도·오류 복구, 중복 제출·debounce/rate limit, 텍스트·tool call·구조화 결과의 상태 표현, 재사용 가능한 headless/presentational 채팅 컴포넌트와 Vite+별도 서버/통합 프레임워크의 트레이드오프 |
+| 5a-7 | `docs/phase-5a/07-react-stack-patterns.md` | [React Stack Patterns](https://www.patterns.dev/react/react-2026/): 프레임워크와 custom stack의 선택 기준, 빌드·라우팅·렌더링·서버 상태·클라이언트 상태·폼·UI·테스트 계층의 책임 지도, 기능 중복과 결합·마이그레이션·운영 비용, 요구사항과 관측 증거를 바탕으로 선택하고 재검토 조건을 남기는 stack ADR |
+
+**실습 과제**: Phase 5 SPA의 한 기능을 HOC 또는 Render Props와 custom hook 두 방식으로 구현해 컴포넌트 트리·타입·테스트·리렌더 차이를 비교하고, Context 기반 compound/headless 컴포넌트를 하나 제작한다. 이어 실제 모델 호출 대신 제어 가능한 mock stream으로 부분 응답·중단·재시도·오류 상태를 갖춘 AI UI를 만들고, 선택한 React 스택과 대안을 비교한 ADR을 작성한다.
 
 ---
 
@@ -328,6 +350,7 @@ web-fe-roadmap-study/
 │   ├── phase-3/            # JavaScript — 언어와 런타임
 │   ├── phase-4/            # TypeScript — 타입 시스템
 │   ├── phase-5/            # React — 렌더링 모델과 상태 아키텍처
+│   ├── phase-5a/           # React Patterns — 컴포넌트 합성과 로직 재사용
 │   ├── phase-6/            # 도구의 내부 동작
 │   ├── phase-7/            # Git — 변경 이력과 협업 모델
 │   ├── phase-8/            # 브라우저·네트워크·보안 심화
@@ -359,6 +382,7 @@ web-fe-roadmap-study/
 | Phase 3 — JavaScript 언어와 런타임 | 10 | ✅ 완료 |
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
+| Phase 5a — React Patterns | 7 | ⬜ 예정 |
 | Phase 6 — 도구의 내부 동작 | 5 | ✅ 완료 |
 | Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ✅ 완료 |
@@ -368,4 +392,4 @@ web-fe-roadmap-study/
 | 부록 A — 사고법과 경험 법칙 | 8 | ✅ 완료 |
 | 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ✅ 완료 |
 
-**다음 단계**: 전체 커리큘럼 문서 작성이 완료되었습니다. 이후에는 각 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 문서를 유지보수합니다.
+**다음 단계**: Phase 5a의 7개 문서와 실습 과제를 작성합니다. 기존 Phase와 부록은 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.
