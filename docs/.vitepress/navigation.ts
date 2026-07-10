@@ -21,7 +21,7 @@ export interface PhaseGroup {
 
 const docsRoot = fileURLToPath(new URL('..', import.meta.url));
 const phaseDirectoryPattern = /^phase-(\d+)$/;
-const appendixDirectoryPattern = /^appendix-a$/;
+const appendixDirectoryPattern = /^appendix-([a-z])$/;
 const documentFilePattern = /^(\d+)-.+\.md$/;
 const headingPattern = /^#\s+(.+?)\s*$/m;
 
@@ -38,6 +38,11 @@ const PHASE_LABELS: Record<number, string> = {
   9: 'Phase 9. 설계 패턴',
   10: 'Phase 10. 실전 프로젝트와 기술 검증',
   11: 'Phase 11. AI 에이전트 활용',
+};
+
+const APPENDIX_LABELS: Record<string, string> = {
+  a: '부록 A. 사고법과 경험 법칙',
+  b: '부록 B. 소프트웨어 아키텍처 패턴',
 };
 
 function phaseLabel(phase: number): string {
@@ -58,11 +63,15 @@ function directoryConfig(name: string): Omit<PhaseGroup, 'docs'> | null {
     };
   }
 
-  if (appendixDirectoryPattern.test(name)) {
+  const appendixMatch = name.match(appendixDirectoryPattern);
+
+  if (appendixMatch) {
+    const appendix = appendixMatch[1];
+
     return {
       phase: null,
-      sortOrder: 1000,
-      text: '부록 A. 사고법과 경험 법칙',
+      sortOrder: 1000 + appendix.charCodeAt(0),
+      text: APPENDIX_LABELS[appendix] ?? `부록 ${appendix.toUpperCase()}`,
       activeMatch: `/${name}/`,
     };
   }
