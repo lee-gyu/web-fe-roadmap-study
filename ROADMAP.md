@@ -13,7 +13,7 @@
 | 목표 | 도구 사용법이 아니라 **브라우저·언어·프레임워크·협업 도구의 동작 모델**을 갖추고, 기술 선택의 트레이드오프를 설명할 수 있는 수준 |
 | 기간 | 본 과정 총 약 31주 + 부록 선택 학습 (주 20시간 이상 학습 기준, 경력자의 배경지식에 따라 단축 가능) |
 | 주력 스택 | HTML / CSS / JavaScript / TypeScript / React / Next.js / Git |
-| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 과정은 별도 과제 없이 상황별 사고법과 경험 법칙 레퍼런스로 활용 |
+| 산출물 | Phase별 실습 과제 + 성능·구조 분석 리포트 + Git 운영 플레이북 + 최종 포트폴리오 프로젝트 2개 이상. 부록 A는 상황별 사고법 레퍼런스, 부록 B는 아키텍처 비교표·선택 ADR·진화 경로 리포트로 활용 |
 
 ### 학습 원칙
 
@@ -21,7 +21,7 @@
 2. **트레이드오프 중심** — 모든 기술 선택에는 비용이 있다. "무엇을 쓸까"가 아니라 "이 상황에서 각 선택이 무엇을 얻고 무엇을 포기하는가"를 판단 기준으로 삼는다.
 3. **경계 조건 탐색** — 추상화가 무너지는 지점(성능 급락, 스펙의 한계, 프레임워크의 탈출구)을 의도적으로 찾아가며 학습한다.
 4. **표준과 1차 자료 중심** — 스펙(WHATWG, ECMA-262, CSSWG, HTTP RFC), Git 공식 문서, 각 도구의 공식 문서를 1차 자료로 삼고, 통념과 1차 자료가 다르면 1차 자료로 검증한다.
-5. **만들며 검증하기** — 본 과정의 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다. 부록 과정은 과제 대신 실제 상황을 해석하는 사고 도구로 다룬다.
+5. **만들며 검증하기** — 본 과정의 모든 Phase는 실습 과제로 마무리하되, "돌아간다"에서 멈추지 않고 DevTools 계측, Git 커밋 그래프 분석, 테스트 결과 등으로 왜 그렇게 동작하는지까지 확인한다. 부록 A는 과제 대신 실제 상황을 해석하는 사고 도구로, 부록 B는 기존 시스템을 품질 속성과 실패 시나리오로 분석하는 설계 도구로 다룬다.
 
 ---
 
@@ -41,6 +41,7 @@ flowchart LR
     P9 --> P10["Phase 10<br/>실전 프로젝트와<br/>기술 검증"]
     P10 --> P11["Phase 11<br/>AI 에이전트 활용<br/>워크플로와 하네스"]
     P11 -.-> A1["부록 A<br/>사고법과<br/>경험 법칙"]
+    P9 -.-> B1["부록 B<br/>소프트웨어<br/>아키텍처 패턴"]
 ```
 
 | Phase | 주제 | 기간(권장) | 핵심 산출물 |
@@ -58,6 +59,7 @@ flowchart LR
 | 10 | 실전 프로젝트와 기술 검증 | 3주+ | 포트폴리오 프로젝트, 기술 의사결정 기록 |
 | 11 | AI 에이전트 활용 — 프론트엔드 개발 워크플로와 하네스 설계 | 2주+ | agent-ready 저장소 지시문, 에이전트 워크플로 플레이북, 검증 리포트 |
 | 부록 A | 사고법과 경험 법칙 — hacker-laws 재분류 | 선택/상시 | 과제 없음. 상황별 판단 질문과 법칙 레퍼런스 |
+| 부록 B | 소프트웨어 아키텍처 패턴 — 경계·흐름·분산 시스템 | 선택/상시 | 아키텍처 비교표, 선택 ADR, 점진적 진화 경로 리포트 |
 
 ---
 
@@ -291,6 +293,27 @@ flowchart LR
 
 ---
 
+### 부록 B — 소프트웨어 아키텍처 패턴: 경계·흐름·분산 시스템 (선택/상시)
+
+**학습 목표**: 아키텍처 스타일(architectural style), 아키텍처 패턴(architectural pattern), 보조 전술(tactic)의 적용 범위를 구분하고, 시스템의 경계·의존성·실행 흐름·데이터 소유권·배포 단위에 가해지는 제약을 읽을 수 있다. 패턴의 이름이나 폴더 구조를 복제하는 데서 멈추지 않고, 변경 용이성·성능·확장성·일관성·신뢰성·운영 복잡도·팀 소유권 사이의 트레이드오프를 근거로 패턴을 선택·조합하거나 적용하지 않을 수 있다.
+
+**운영 원칙**: 이 부록은 Phase 9의 객체·모듈·React 컴포넌트 패턴을 반복하지 않는다. [`plan/appendix-b/references.md`](plan/appendix-b/references.md)의 조사 결과를 바탕으로, 시스템 전체 형태를 정하는 스타일과 애플리케이션 내부 의존성 패턴, 분산 시스템의 반복 문제를 푸는 보조 패턴을 서로 다른 층위에서 다룬다. 패턴마다 해결하려는 문제와 강제하는 제약, 얻는 품질 속성, 새로 생기는 실패 모드, 적합하지 않은 조건, 제거·이전 경로를 함께 설명한다. 하나의 시스템에 여러 패턴이 중첩될 수 있으며, Microservices를 Monolith보다 발전된 단계로 간주하지 않는다.
+
+| 파트 | 문서 | 주요 내용 |
+|------|------|----------|
+| B-1 | `docs/appendix-b/01-reading-architecture-patterns.md` | **아키텍처 패턴을 읽는 기준**: style·pattern·tactic과 Phase 9의 design pattern을 구분한다. context-problem-forces-solution-consequences 구조, 변경 용이성·성능·가용성·보안·테스트 가능성·운영 복잡도 같은 quality attribute, 패턴 조합과 경계 조건을 비교하는 판단 프레임을 세운다. |
+| B-2 | `docs/appendix-b/02-in-process-structures.md` | **프로세스 내부 구조와 실행 흐름**: Layered/N-tier의 논리 layer와 물리 tier, open/closed layer, Pipes and Filters의 표준 입출력·재조합·backpressure, Microkernel/Plugin의 core·plugin 계약과 versioning을 다룬다. Blackboard, PAC, Reflection은 고전 POSA 패턴의 목적과 현대적 적용 범위를 비교한다. |
+| B-3 | `docs/appendix-b/03-boundaries-and-dependencies.md` | **핵심 보호와 모듈 경계**: Hexagonal/Ports and Adapters의 inside-outside 비대칭과 port의 의미, Onion/Clean Architecture의 dependency rule, Modular Monolith의 명시적 공개 계약·경계 강제, Vertical Slice의 change axis를 비교한다. 단순 CRUD에서 interface·mapper·layer가 ceremony로 전락하는 조건도 다룬다. |
+| B-4 | `docs/appendix-b/04-networked-system-styles.md` | **네트워크 시스템과 배포 단위**: Client-Server와 REST의 제약 합성, SOA와 Microservices의 계보, service별 데이터 소유권과 독립 배포의 실제 비용을 비교한다. Modular Monolith, Web-Queue-Worker, Peer-to-Peer, Space-Based, Serverless를 성숙도 순서가 아닌 서로 다른 topology·운영 모델로 읽는다. |
+| B-5 | `docs/appendix-b/05-events-messaging-and-state.md` | **이벤트·메시징·상태 모델**: Event-Driven Architecture의 broker/mediator topology, Publish-Subscribe와 event stream의 전달 의미, CQRS의 read/write model 분리, Event Sourcing의 append-only event·replay·snapshot·schema evolution, Materialized View를 구분하고 조합한다. EDA·CQRS·Event Sourcing이 서로를 필수로 요구하지 않는 이유를 설명한다. |
+| B-6 | `docs/appendix-b/06-distributed-consistency-and-resilience.md` | **분산 일관성과 복원력**: Saga choreography/orchestration과 compensating transaction, Transactional Outbox와 consumer idempotency, timeout·Retry with Backoff·Circuit Breaker·Bulkhead, Scatter-Gather를 failure timeline으로 분석한다. exactly-once라는 표현의 경계와 eventual consistency가 사용자 경험에 노출되는 지점을 다룬다. |
+| B-7 | `docs/appendix-b/07-frontend-architecture-patterns.md` | **프론트엔드 아키텍처의 계보**: Smalltalk·서버·클라이언트 MVC의 차이, MVP/MVVM의 presentation 분리와 binding 비용, Flux/Redux의 단방향 data flow, BFF의 client별 API 소유권, Micro Frontends의 독립 배포·runtime integration·bundle/UX 거버넌스 비용을 비교한다. React 상태와 SSR/RSC 사용법은 Phase 5·8로 위임한다. |
+| B-8 | `docs/appendix-b/08-evolution-and-architecture-decisions.md` | **점진적 진화와 아키텍처 의사결정**: Layered Monolith, Modular Monolith, Microservices 사이의 선택을 팀·배포·데이터 경계로 평가한다. Strangler Fig, Anti-Corruption Layer, API Gateway/BFF를 이용한 점진적 이전, 잘못 나눈 경계를 다시 합치는 비용, Conway's Law와 소유권을 다룬다. 후보별 quality attribute·실패 모드·관측 증거·철회 조건을 ADR에 기록한다. |
+
+**적용 과제**: Phase 10 프로젝트나 익숙한 실무 시스템 하나를 골라 현재 아키텍처의 경계·의존성·데이터 소유권·배포 단위를 그린다. 최소 세 가지 후보 패턴을 같은 quality attribute 시나리오로 비교하고, 선택한 패턴과 선택하지 않은 이유, 예상 실패 모드, 관측 방법, 점진적 도입·철회 경로를 하나의 ADR과 진화 경로 리포트로 작성한다. 별도의 대규모 구현 프로젝트는 요구하지 않는다.
+
+---
+
 ## 4. 저장소 구조
 
 ```
@@ -310,8 +333,10 @@ web-fe-roadmap-study/
 │   ├── phase-9/            # 설계 패턴 — JavaScript와 React 컴포넌트 패턴
 │   ├── phase-10/           # 실전 프로젝트와 기술 검증
 │   ├── phase-11/           # AI 에이전트 활용 — 워크플로와 하네스 설계
-│   └── appendix-a/         # 사고법과 경험 법칙 — hacker-laws 재분류
-├── plan/                   # Phase별 학습 기획 문서
+│   ├── appendix-a/         # 사고법과 경험 법칙 — hacker-laws 재분류
+│   └── appendix-b/         # 소프트웨어 아키텍처 패턴
+├── plan/                   # Phase별·부록별 학습 기획 문서
+│   └── appendix-b/         # 부록 B 조사 자료와 집필 계획
 └── exercises/              # Phase별 실습 과제 안내 및 예시 코드
 ```
 
@@ -346,5 +371,6 @@ web-fe-roadmap-study/
 | Phase 10 — 실전 프로젝트와 기술 검증 | 4 | ✅ 완료 |
 | Phase 11 — AI 에이전트 활용 | 7 | ✅ 완료 |
 | 부록 A — 사고법과 경험 법칙 | 8 | ✅ 완료 |
+| 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ⬜ 예정 |
 
-**다음 단계**: 부록 A 문서는 과제 없이 상황별 사고법 레퍼런스로 사용합니다. 이후 문서를 보강할 때도 각 법칙을 절대 규칙처럼 적용하지 않고, 특정 상황에서 어떤 질문을 열어 주는지와 언제 반례가 되는지를 함께 설명합니다.
+**다음 단계**: [`plan/appendix-b/references.md`](plan/appendix-b/references.md)의 조사 결과와 위 문서 구성을 바탕으로 부록 B의 상세 집필 계획을 확정합니다. 이후 각 문서는 패턴 이름이나 구현 템플릿을 나열하지 않고, 동일한 quality attribute 시나리오에서 대안의 제약·비용·실패 모드·점진적 진화 경로를 비교하는 방식으로 작성합니다.
