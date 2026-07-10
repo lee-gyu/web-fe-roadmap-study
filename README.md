@@ -1,6 +1,6 @@
 # web-fe-roadmap-study
 
-이 저장소는 claude code fable5 모델과 Codex GPT 5.5(xhigh) 기반으로 생성한 웹 프론트엔드 개발자 기술 교육 저장소 입니다.
+이 저장소는 claude code fable5 모델과 Codex GPT 5.6 Sol(xhigh) 기반으로 생성한 웹 프론트엔드 개발자 기술 교육 저장소 입니다.
 문서를 읽는 대상을 5년자 이상 개발자로 기획 했으므로, 완전한 기초보다는 높은 기준으로 작성되었습니다.
 
 ## 각 커리큘럼 과정 목차
