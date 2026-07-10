@@ -403,15 +403,19 @@ phase-5a-lab/
 
 ### 진행 체크리스트
 
-- [ ] 공통 비교 fixture와 패턴 비교표 확정
-- [ ] 5a-1 `01-hoc-pattern.md`
-- [ ] 5a-2 `02-hooks-pattern.md`
-- [ ] 5a-3 `03-compound-pattern.md`
-- [ ] 5a-4 `04-container-presentational-pattern.md`
-- [ ] 5a-5 `05-render-props-pattern.md`
-- [ ] 5a-6 `06-ai-ui-patterns.md`
-- [ ] 5a-7 `07-react-stack-patterns.md`
-- [ ] `exercises/phase-5a/README.md` 과제 안내 문서
-- [ ] 문서 간 상대 링크·위임 지점 검증
-- [ ] TypeScript·test·build·Profiler 검증 증거 확인
-- [ ] ROADMAP.md 5절 진행 현황 표 갱신
+- [x] 공통 비교 fixture와 패턴 비교표 확정
+- [x] 5a-1 `01-hoc-pattern.md`
+- [x] 5a-2 `02-hooks-pattern.md`
+- [x] 5a-3 `03-compound-pattern.md`
+- [x] 5a-4 `04-container-presentational-pattern.md`
+- [x] 5a-5 `05-render-props-pattern.md`
+- [x] 5a-6 `06-ai-ui-patterns.md`
+- [x] 5a-7 `07-react-stack-patterns.md`
+- [x] `exercises/phase-5a/README.md` 과제 안내 문서
+- [x] 문서 간 상대 링크·위임 지점 검증
+- [x] `docs/.vitepress/navigation.ts`의 Phase 5a 발견 패턴·레이블·정렬과 nav/sidebar 포함 검증
+- [x] TypeScript/JavaScript code fence 문법 검사와 VitePress production build
+- [x] test·Profiler 검증 시나리오와 학습자 증거 기준 정의
+- [x] ROADMAP.md 5절 진행 현황 표 갱신
+
+> 집필 완료 검증(2026-07-10): 모든 로컬 Markdown link target이 존재하고, TypeScript/JavaScript code fence가 문법 검사를 통과했으며, Phase 5a 그룹과 7개 링크가 nav/sidebar에 포함되고 `pnpm docs:build`가 성공했다. React runtime typecheck·동작 test·Profiler 수치는 실습 프로젝트에서 학습자가 생성할 산출물이므로 본 저장소의 문서 빌드 결과로 대신 주장하지 않는다.

@@ -188,7 +188,7 @@ flowchart LR
 | 5a-6 | `docs/phase-5a/06-ai-ui-patterns.md` | [AI UI Patterns](https://www.patterns.dev/react/ai-ui-patterns/): API key를 숨기는 서버 경계와 메시지 상태 모델, Web Streams 기반 부분 응답과 중단·재시도·오류 복구, 중복 제출·debounce/rate limit, 텍스트·tool call·구조화 결과의 상태 표현, 재사용 가능한 headless/presentational 채팅 컴포넌트와 Vite+별도 서버/통합 프레임워크의 트레이드오프 |
 | 5a-7 | `docs/phase-5a/07-react-stack-patterns.md` | [React Stack Patterns](https://www.patterns.dev/react/react-2026/): 프레임워크와 custom stack의 선택 기준, 빌드·라우팅·렌더링·서버 상태·클라이언트 상태·폼·UI·테스트 계층의 책임 지도, 기능 중복과 결합·마이그레이션·운영 비용, 요구사항과 관측 증거를 바탕으로 선택하고 재검토 조건을 남기는 stack ADR |
 
-**실습 과제**: Phase 5 SPA의 한 기능을 HOC 또는 Render Props와 custom hook 두 방식으로 구현해 컴포넌트 트리·타입·테스트·리렌더 차이를 비교하고, Context 기반 compound/headless 컴포넌트를 하나 제작한다. 이어 실제 모델 호출 대신 제어 가능한 mock stream으로 부분 응답·중단·재시도·오류 상태를 갖춘 AI UI를 만들고, 선택한 React 스택과 대안을 비교한 ADR을 작성한다.
+**실습 과제**: Phase 5 SPA의 한 기능을 HOC 또는 Render Props와 custom hook 두 방식으로 구현해 컴포넌트 트리·타입·테스트·리렌더 차이를 비교하고, Context 기반 compound/headless 컴포넌트를 하나 제작한다. 이어 실제 모델 호출 대신 제어 가능한 mock stream으로 부분 응답·중단·재시도·오류 상태를 갖춘 AI UI를 만들고, 선택한 React 스택과 대안을 비교한 ADR을 작성한다. 상세 기준은 [exercises/phase-5a](exercises/phase-5a/README.md) 참고.
 
 ---
 
@@ -382,7 +382,7 @@ web-fe-roadmap-study/
 | Phase 3 — JavaScript 언어와 런타임 | 10 | ✅ 완료 |
 | Phase 4 — TypeScript 타입 시스템 | 5 | ✅ 완료 |
 | Phase 5 — React 렌더링 모델 | 9 | ✅ 완료 |
-| Phase 5a — React Patterns | 7 | ⬜ 예정 |
+| Phase 5a — React Patterns | 7 | ✅ 완료 |
 | Phase 6 — 도구의 내부 동작 | 5 | ✅ 완료 |
 | Phase 7 — Git 변경 이력과 협업 모델 | 8 | ✅ 완료 |
 | Phase 8 — 브라우저·네트워크·보안 심화 | 6 | ✅ 완료 |
@@ -392,4 +392,4 @@ web-fe-roadmap-study/
 | 부록 A — 사고법과 경험 법칙 | 8 | ✅ 완료 |
 | 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ✅ 완료 |
 
-**다음 단계**: Phase 5a의 7개 문서와 실습 과제를 작성합니다. 기존 Phase와 부록은 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.
+**다음 단계**: 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다.
