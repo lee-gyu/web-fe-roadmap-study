@@ -12,6 +12,7 @@ export interface PhaseDoc {
 }
 
 export interface PhaseGroup {
+  id: string;
   phase: number | null;
   sortOrder: number;
   text: string;
@@ -20,18 +21,19 @@ export interface PhaseGroup {
 }
 
 const docsRoot = fileURLToPath(new URL('..', import.meta.url));
-const phaseDirectoryPattern = /^phase-(\d+)$/;
+const phaseDirectoryPattern = /^phase-(\d+)([a-z]?)$/;
 const appendixDirectoryPattern = /^appendix-([a-z])$/;
 const documentFilePattern = /^(\d+)-.+\.md$/;
 const headingPattern = /^#\s+(.+?)\s*$/m;
 
-const PHASE_LABELS: Record<number, string> = {
+const PHASE_LABELS: Record<string, string> = {
   0: 'Phase 0. 웹 플랫폼의 이해',
   1: 'Phase 1. HTML & CSS',
   2: 'Phase 2. HTTP 프로토콜',
   3: 'Phase 3. JavaScript 언어와 런타임',
   4: 'Phase 4. TypeScript 타입 시스템',
   5: 'Phase 5. React 렌더링 모델',
+  '5a': 'Phase 5a. React Patterns',
   6: 'Phase 6. 도구의 내부 동작',
   7: 'Phase 7. Git 변경 이력과 협업 모델',
   8: 'Phase 8. 브라우저·네트워크·보안 심화',
@@ -45,8 +47,16 @@ const APPENDIX_LABELS: Record<string, string> = {
   b: '부록 B. 소프트웨어 아키텍처 패턴',
 };
 
-function phaseLabel(phase: number): string {
-  return PHASE_LABELS[phase] ?? `Phase ${phase}`;
+function phaseLabel(phaseId: string): string {
+  return PHASE_LABELS[phaseId] ?? `Phase ${phaseId}`;
+}
+
+function phaseSortOrder(phase: number, suffix: string): number {
+  if (!suffix) {
+    return phase;
+  }
+
+  return phase + (suffix.charCodeAt(0) - 'a'.charCodeAt(0) + 1) / 100;
 }
 
 function directoryConfig(name: string): Omit<PhaseGroup, 'docs'> | null {
@@ -54,11 +64,14 @@ function directoryConfig(name: string): Omit<PhaseGroup, 'docs'> | null {
 
   if (phaseMatch) {
     const phase = Number(phaseMatch[1]);
+    const suffix = phaseMatch[2] ?? '';
+    const phaseId = `${phase}${suffix}`;
 
     return {
+      id: name,
       phase,
-      sortOrder: phase,
-      text: phaseLabel(phase),
+      sortOrder: phaseSortOrder(phase, suffix),
+      text: phaseLabel(phaseId),
       activeMatch: `/${name}/`,
     };
   }
@@ -69,6 +82,7 @@ function directoryConfig(name: string): Omit<PhaseGroup, 'docs'> | null {
     const appendix = appendixMatch[1];
 
     return {
+      id: name,
       phase: null,
       sortOrder: 1000 + appendix.charCodeAt(0),
       text: APPENDIX_LABELS[appendix] ?? `부록 ${appendix.toUpperCase()}`,

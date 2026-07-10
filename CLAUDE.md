@@ -20,7 +20,7 @@
 | `ROADMAP.md`, `plan/`, `exercises/` 관리 | [.agents/curriculum-management.md](.agents/curriculum-management.md) |
 | VitePress, 패키지, 도구 버전, CI·배포 관리 | [.agents/repository-operations.md](.agents/repository-operations.md) |
 
-작업이 여러 범위에 걸치면 해당 지침을 모두 적용한다. 예를 들어 챕터를 추가하면 콘텐츠 집필 지침과 커리큘럼 관리 지침을 함께 읽고, 사이트 동작까지 바꾸면 저장소 운영 지침도 읽는다.
+작업이 여러 범위에 걸치면 해당 지침을 모두 적용한다. 예를 들어 챕터를 추가하면 콘텐츠 집필 지침과 커리큘럼 관리 지침을 함께 읽는다. 새 Phase·부록 디렉터리를 만들거나 VitePress 내비게이션에 새 그룹이 생기는 작업은 사이트 동작 변경이므로 저장소 운영 지침과 `docs/.vitepress/navigation.ts` 점검까지 작업 범위에 포함한다.
 
 ## 공통 원칙
 
