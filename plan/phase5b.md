@@ -525,7 +525,7 @@ phase-5b-lab/
 ### 진행 체크리스트
 
 - [x] `ROADMAP.md`의 Phase 5b 목표·8개 문서·실습 범위를 PLAN에 구체화
-- [ ] 공통 비교 fixture·데이터 지연/실패 controller·계측 marker 확정
+- [x] 공통 비교 fixture·데이터 지연/실패 controller·계측 marker 확정 — `exercises/phase-5b/README.md`의 공통 비교 fixture·제어 가능한 data source·공통 계측 marker 절로 확정
 - [x] 5b-1 `01-client-side-rendering.md`
 - [x] 5b-2 `02-server-side-rendering.md`
 - [x] 5b-3 `03-static-rendering.md`
@@ -534,10 +534,10 @@ phase-5b-lab/
 - [x] 5b-6 `06-streaming-server-side-rendering.md`
 - [x] 5b-7 `07-react-server-components.md`
 - [x] 5b-8 `08-selective-hydration.md`
-- [ ] `exercises/phase-5b/README.md` 과제 안내 문서
-- [ ] Phase 8의 렌더링 전략·Next.js 문서와 중복 설명·위임 링크 검토
-- [ ] 문서 간 상대 링크·자료 확인 날짜·framework version/feature flag 검증
+- [x] `exercises/phase-5b/README.md` 과제 안내 문서
+- [x] Phase 8의 렌더링 전략·Next.js 문서와 중복 설명·위임 링크 검토 — 8-5·8-6에 Phase 5b 모델 위임 링크 추가, 계측·Next.js 통합 관점은 Phase 8이 유지
+- [x] 문서 간 상대 링크·자료 확인 날짜·framework version/feature flag 검증
 - [x] `docs/.vitepress/navigation.ts`의 Phase 5b 발견 패턴·레이블·정렬과 nav/sidebar 포함 검증
-- [ ] TypeScript/JavaScript code fence typecheck·test와 VitePress production build
-- [ ] cache·streaming·hydration·RSC 실험의 production evidence 기준 충족
-- [ ] `PROGRESS.md` 진행 현황을 실제 문서 수와 완료 상태에 맞춰 갱신
+- [x] TypeScript/JavaScript code fence typecheck·test와 VitePress production build — fence 24개를 TypeScript 5.9 strict + @types/react 19 + next 16.2 타입으로 검사, `pnpm docs:build` 통과
+- [x] cache·streaming·hydration·RSC 실험의 production evidence 기준 충족 — 각 문서 관찰 실험과 실습 측정 프로토콜이 production build·버전·반복 측정 조건을 요구
+- [x] `PROGRESS.md` 진행 현황을 실제 문서 수와 완료 상태에 맞춰 갱신
