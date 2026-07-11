@@ -47,6 +47,9 @@ jobs:
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
           claude_args: |
+            --model claude-sonnet-5
+            --effort xhigh
+            --max-turns 10
             --allowedTools "mcp__github__create_pull_request"
 
 
