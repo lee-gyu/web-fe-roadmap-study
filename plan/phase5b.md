@@ -526,18 +526,18 @@ phase-5b-lab/
 
 - [x] `ROADMAP.md`의 Phase 5b 목표·8개 문서·실습 범위를 PLAN에 구체화
 - [ ] 공통 비교 fixture·데이터 지연/실패 controller·계측 marker 확정
-- [ ] 5b-1 `01-client-side-rendering.md`
-- [ ] 5b-2 `02-server-side-rendering.md`
-- [ ] 5b-3 `03-static-rendering.md`
-- [ ] 5b-4 `04-incremental-static-generation.md`
-- [ ] 5b-5 `05-progressive-hydration.md`
-- [ ] 5b-6 `06-streaming-server-side-rendering.md`
-- [ ] 5b-7 `07-react-server-components.md`
-- [ ] 5b-8 `08-selective-hydration.md`
+- [x] 5b-1 `01-client-side-rendering.md`
+- [x] 5b-2 `02-server-side-rendering.md`
+- [x] 5b-3 `03-static-rendering.md`
+- [x] 5b-4 `04-incremental-static-generation.md`
+- [x] 5b-5 `05-progressive-hydration.md`
+- [x] 5b-6 `06-streaming-server-side-rendering.md`
+- [x] 5b-7 `07-react-server-components.md`
+- [x] 5b-8 `08-selective-hydration.md`
 - [ ] `exercises/phase-5b/README.md` 과제 안내 문서
 - [ ] Phase 8의 렌더링 전략·Next.js 문서와 중복 설명·위임 링크 검토
 - [ ] 문서 간 상대 링크·자료 확인 날짜·framework version/feature flag 검증
-- [ ] `docs/.vitepress/navigation.ts`의 Phase 5b 발견 패턴·레이블·정렬과 nav/sidebar 포함 검증
+- [x] `docs/.vitepress/navigation.ts`의 Phase 5b 발견 패턴·레이블·정렬과 nav/sidebar 포함 검증
 - [ ] TypeScript/JavaScript code fence typecheck·test와 VitePress production build
 - [ ] cache·streaming·hydration·RSC 실험의 production evidence 기준 충족
-- [ ] `ROADMAP.md` 5절 진행 현황을 실제 문서 수와 완료 상태에 맞춰 갱신
+- [ ] `PROGRESS.md` 진행 현황을 실제 문서 수와 완료 상태에 맞춰 갱신

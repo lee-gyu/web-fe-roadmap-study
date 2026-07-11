@@ -169,10 +169,10 @@ CLAUDE.md의 전 지침에 더해, Phase 6에서 특히 지킬 것:
 
 ## 6. 진행 체크리스트
 
-- [ ] 6-1 `01-package-management.md`
-- [ ] 6-2 `02-bundlers.md`
-- [ ] 6-3 `03-static-analysis.md`
-- [ ] 6-4 `04-testing-strategy.md`
-- [ ] 6-5 `05-ci-and-deployment.md`
-- [ ] `exercises/phase-6/` 과제 안내 문서
-- [ ] ROADMAP.md 5절 진행 현황 표 갱신
+- [x] 6-1 `01-package-management.md`
+- [x] 6-2 `02-bundlers.md`
+- [x] 6-3 `03-static-analysis.md`
+- [x] 6-4 `04-testing-strategy.md`
+- [x] 6-5 `05-ci-and-deployment.md`
+- [x] `exercises/phase-6/` 과제 안내 문서
+- [x] 진행 현황 표 갱신 (현재는 `PROGRESS.md`에서 관리)

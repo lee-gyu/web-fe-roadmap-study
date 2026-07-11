@@ -5,7 +5,8 @@
 
 ## 기준 문서
 
-- [ROADMAP.md](ROADMAP.md)는 커리큘럼의 목표, 범위, 순서, 파일 경로, 진행 상태를 관리한다.
+- [ROADMAP.md](ROADMAP.md)는 커리큘럼의 목표, 범위, 순서, 파일 경로를 관리한다.
+- [PROGRESS.md](PROGRESS.md)는 문서 작성 진행 상태와 미완료 TODO를 관리한다.
 - `docs/`의 Markdown은 교육 콘텐츠의 canonical 원본이다.
 - 도구와 의존성 정보는 `mise.toml`, `package.json`을 기준으로 확인한다.
 - 상세 실행 규칙은 `.agents/`의 작업별 지침이 소유한다. 다른 문서에 같은 규칙을 복제하지 않는다.
@@ -17,7 +18,7 @@
 | 작업 범위 | 필수 지침 |
 | --- | --- |
 | `docs/phase-*`, `docs/appendix-*` 집필·수정·검토 | [.agents/content-writing.md](.agents/content-writing.md) |
-| `ROADMAP.md`, `plan/`, `exercises/` 관리 | [.agents/curriculum-management.md](.agents/curriculum-management.md) |
+| `ROADMAP.md`, `PROGRESS.md`, `plan/`, `exercises/` 관리 | [.agents/curriculum-management.md](.agents/curriculum-management.md) |
 | VitePress, 패키지, 도구 버전, CI·배포 관리 | [.agents/repository-operations.md](.agents/repository-operations.md) |
 
 작업이 여러 범위에 걸치면 해당 지침을 모두 적용한다. 예를 들어 챕터를 추가하면 콘텐츠 집필 지침과 커리큘럼 관리 지침을 함께 읽는다. 새 Phase·부록 디렉터리를 만들거나 VitePress 내비게이션에 새 그룹이 생기는 작업은 사이트 동작 변경이므로 저장소 운영 지침과 `docs/.vitepress/navigation.ts` 점검까지 작업 범위에 포함한다.
