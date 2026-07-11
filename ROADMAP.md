@@ -408,7 +408,6 @@ web-fe-roadmap-study/
 ├── .agents/                # 작업 유형별 에이전트 상세 지침
 ├── ROADMAP.md              # 이 문서 (전체 커리큘럼)
 ├── PROGRESS.md             # 문서 작성 진행 현황과 TODO
-├── hacker-laws/            # 부록 A 분류의 원문 참고 자료
 ├── docs/
 │   ├── phase-0/            # 웹 플랫폼의 이해
 │   ├── phase-1/            # HTML & CSS — 파싱과 렌더링 모델
