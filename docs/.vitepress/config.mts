@@ -7,6 +7,12 @@ export default defineConfig({
   title: 'Web F/E Learning',
   description: '웹 개발자를 위한 기술 교육 문서',
   cleanUrls: true,
+  lastUpdated: true,
+  markdown: {
+    image: {
+      lazyLoading: true,
+    },
+  },
   head: [
     [
       'link',
@@ -36,6 +42,20 @@ export default defineConfig({
       prev: '이전 문서',
       next: '다음 문서',
     },
+    lastUpdated: {
+      text: '마지막 업데이트',
+      formatOptions: {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      },
+    },
+    editLink: {
+      pattern: 'https://github.com/lee-gyu/web-fe-roadmap-study/edit/main/docs/:path',
+      text: 'Edit on GitHub',
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/lee-gyu/web-fe-roadmap-study' },
+    ],
     returnToTopLabel: '맨 위로',
     sidebarMenuLabel: '문서 메뉴',
     darkModeSwitchLabel: '테마',
