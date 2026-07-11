@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: Web F/E Learning
+  name: Web Dev Learn
   text: 내부 동작 원리와 설계 판단 기준을 배우는 교육 문서
-  tagline: 브라우저, 언어, 프레임워크의 동작 모델을 이해할 수 있도록 구성한 커리큘럼이다.
+  tagline: 브라우저, 언어, 프레임워크의 동작 모델을 이해할 수 있도록 구성한 커리큘럼
 
 features:
   - title: 원리 우선
