@@ -464,4 +464,7 @@ web-fe-roadmap-study/
 | 부록 B — 소프트웨어 아키텍처 패턴 | 8 | ✅ 완료 |
 | 부록 C — SolidJS | 7 | ✅ 완료 |
 
-**다음 단계**: Phase 5b의 상세 기획과 실습 기준을 확정한 뒤 8개 문서를 집필하고 VitePress 내비게이션에 연결합니다. 이어 Phase 10a의 상세 기획·실습 기준을 정리하고 3개 문서를 집필합니다. 이후 전체 Phase와 부록의 확인 문제·참고 링크를 정기적으로 검토하고, 브라우저·React·Solid·프레임워크·도구의 기준 버전 변화와 실습 검증 결과를 반영해 유지보수합니다. 부록 C는 특히 `SuspenseList`, Solid Router, SolidStart의 버전 민감 API와 streaming·hydration 실습 결과를 최신 공식 문서 및 실제 배포 환경과 계속 대조합니다.
+### TODO
+
+- [ ] Phase 5b의 상세 기획과 실습 기준을 확정하고, 8개 문서를 집필한 뒤 VitePress 내비게이션에 연결한다.
+- [ ] Phase 10a의 상세 기획과 실습 기준을 확정하고, 3개 문서를 집필한 뒤 VitePress 내비게이션에 연결한다.
