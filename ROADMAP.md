@@ -215,7 +215,7 @@ flowchart LR
 | 5b-7 | `docs/phase-5b/07-react-server-components.md` | [React Server Components](https://www.patterns.dev/react/react-server-components/): RSC와 SSR의 서로 다른 책임, build/request 시점 실행과 RSC payload, `'use client'` 경계와 Server Function의 `'use server'`, 직렬화 가능한 props와 composition 규칙, 서버 직접 데이터 접근·waterfall·보안 경계, 클라이언트 번들·하이드레이션 감소와 서버/캐시 비용 |
 | 5b-8 | `docs/phase-5b/08-selective-hydration.md` | [Selective Hydration](https://www.patterns.dev/react/react-selective-hydration/): 스트리밍 SSR과 `Suspense`가 만드는 독립 하이드레이션 단위, 코드·데이터 도착 순서와 사용자 입력에 따른 우선순위 조정, 이벤트 재생과 이미 표시됐지만 아직 비활성인 UI, progressive hydration과의 포함 관계, 경계 크기·fallback·상호작용 우선순위를 계측해 조정하는 기준 |
 
-**실습 과제**: 동일한 상품 상세 또는 콘텐츠 페이지를 CSR·SSR·SSG·ISR로 각각 구성하고, 제어 가능한 데이터 지연과 캐시 갱신 시나리오에서 HTML 응답, 요청 waterfall, TTFB·FCP·LCP·INP, 전달 JavaScript, 상호작용 가능 시점을 비교한다. 이어 느린 영역을 `Suspense`로 분리한 스트리밍 SSR과 Server/Client Component 경계를 적용해 전후를 계측하고, 페이지 영역별로 선택한 패턴·대안·무효화 조건·철회 조건을 렌더링 전략 ADR에 기록한다. 상세 실습 문서는 `exercises/phase-5b/README.md`에서 작성한다.
+**실습 과제**: 동일한 상품 상세 또는 콘텐츠 페이지를 CSR·SSR·SSG·ISR로 각각 구성하고, 제어 가능한 데이터 지연과 캐시 갱신 시나리오에서 HTML 응답, 요청 waterfall, TTFB·FCP·LCP·INP, 전달 JavaScript, 상호작용 가능 시점을 비교한다. 이어 느린 영역을 `Suspense`로 분리한 스트리밍 SSR과 Server/Client Component 경계를 적용해 전후를 계측하고, 페이지 영역별로 선택한 패턴·대안·무효화 조건·철회 조건을 렌더링 전략 ADR에 기록한다. 상세 기준은 [exercises/phase-5b](exercises/phase-5b/README.md) 참고.
 
 ---
 
