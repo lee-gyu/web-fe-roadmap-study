@@ -60,7 +60,7 @@ jobs:
           claude_args: |
             --model claude-sonnet-5
             --effort xhigh
-            --max-turns 10
             --allowedTools "mcp__github__create_pull_request,Bash(pnpm install:*),Bash(pnpm docs:build:*)"
+          #  --max-turns 10
 
 
