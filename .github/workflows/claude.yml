@@ -30,6 +30,17 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.0
+          cache: pnpm
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
@@ -50,6 +61,6 @@ jobs:
             --model claude-sonnet-5
             --effort xhigh
             --max-turns 10
-            --allowedTools "mcp__github__create_pull_request"
+            --allowedTools "mcp__github__create_pull_request,Bash(pnpm install:*),Bash(pnpm docs:build:*)"
 
 
