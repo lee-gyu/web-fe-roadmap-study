@@ -20,6 +20,7 @@
 - Phase 8 — 브라우저·네트워크·보안 심화
 - Phase 9 — 설계 패턴
 - Phase 10 — 실전 프로젝트와 기술 검증
+- Phase 10a — 프론트엔드 관측 가능성과 프로덕션 장애 진단
 - Phase 11 — AI 에이전트 활용
 - 부록 A — 사고법과 경험 법칙
     - 출처: <https://github.com/dwmkerr/hacker-laws>
